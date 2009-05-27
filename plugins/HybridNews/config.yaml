@@ -1,0 +1,141 @@
+name: "Hybrid News Plugin"
+description: "An adaptation of the open source Hyrbid News Theme for WordPress for the Movable Type platform."
+version: 0.1
+key: "HybridNews"
+
+blog_config_template: '<mt:PluginConfigForm id="HybridNews">'
+settings:
+  blog_logo_url:
+    scope: blog
+  exclude_blog:
+    scope: blog
+  use_threaded:
+    scope: blog
+  anon_name:
+    scope: blog
+    default: "Joe Pothole"
+plugin_config:
+  HybridNews:
+    fieldset1:
+      blog_logo_url:
+        type: text
+        label: 'Blog Logo URL'
+        hint: 'This setting is for the blog logo URL. All URLs must reference an image 276 pixels wide and 72 pixels high. No relative URLs permitted.'
+        tag: 'BlogLogoURL'
+      exclude_blog:
+        type: checkbox
+        label: 'Exclude from Blog Listing'
+        hint: 'Do not display this blog among on the "Our Blogs" page.'
+        tag: 'ExcludeBlogFromListing?'
+      use_threaded:
+        type: checkbox
+        label: 'Use Threaded Comments'
+        hint: "Display this blog's comments using nested threaded comments. EXPERIMENTAL."
+        tag: 'UseThreadedComments?'
+      anon_name:
+        type: text
+        label: 'Anonymous User Name'
+        hint: "The name that will be given to anonymous user's who do not provide a name."
+        tag: 'AnonymousUserDisplayName'
+
+template_sets:
+  hybrid_news:
+    base_path: templates/
+    label: 'Hybrid News'
+    templates:
+      widgetset:      
+        homepage:     
+          label: Homepage
+          widgets:
+#             - 'Search Box'
+      index:
+        sitemap:
+          label: 'Sitemap'
+          outfile: 'sitemap.xml'
+          rebuild_me: 0 
+        feed_recent:
+          label: 'Feed - Recent Entries'
+          outfile: atom.xml
+          rebuild_me: 1
+        main_index:
+          label: 'Main Index'
+          outfile: index.html
+          rebuild_me: 1
+        javascript:
+          label: 'JavaScript (Functions)'
+          outfile: javascript.js
+          rebuild_me: 1
+        javascript_mt:
+          label: 'JavaScript (MT Config)'
+          outfile: mt.js
+          rebuild_me: 1
+        styles:
+          label: 'Stylesheet'
+          outfile: styles.css
+          custom_css: 1
+        rsd:
+          label: 'RSD'
+          outfile: rsd.xml
+          rebuild_me: 1
+      archive:
+        category_entry_listing:
+          label: 'Category Entry Listing'
+          mappings:
+            category:
+              archive_type: Category
+              preferred: 1
+        monthly_entry_listing:
+          label: 'Monthly Entry Listing'
+          mappings:
+            monthly:
+              archive_type: Monthly
+              preferred: 1
+      individual:
+        entry:
+          label: Entry
+          mappings:
+            individual:
+              archive_type: Individual
+              file_template: %y/%m/%-f
+              preferred: 1
+        page:
+          label: Page
+          mappings:
+            page:
+              archive_type: Page
+              file_template: %-c/%-f
+              preferred: 1
+      module:
+        banner_footer:
+          label: 'Banner Footer'
+        banner_header:
+          label: 'Banner Header'
+        comments:
+          label: 'Comments'
+        entry_summary:
+          label: 'Entry Summary'
+        global_variables:
+          label: 'Global Variables'
+        html_head:
+          label: 'HTML Head'
+        individual_comment:
+          label: 'Individual Comment'
+        sidebar:
+          label: 'Sidebar'
+        userpic:
+          label: 'Userpic'
+        asset_insertion:
+          label: 'Asset Insertion'
+        sitemap_mod:
+          label: 'Sitemap Include'
+      system:
+        comment_preview:
+          label: 'Comment Preview'
+        comment_response:
+          label: 'Comment Response'
+        dynamic_error:
+          label: 'Dynamic Error'
+        search_results:
+          label: 'Search Results'
+        popup_image:
+          label: 'Pop-up Image'

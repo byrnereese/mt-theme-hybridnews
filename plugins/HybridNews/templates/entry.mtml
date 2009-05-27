@@ -1,0 +1,75 @@
+<mt:section trim="1">
+  <mt:Include module="CN: Global Variables">
+  <mt:setvarblock name="omni_channel">Chicago Now:blogs</mt:setvarblock>
+  <mt:setvarblock name="omni_page">Chicago Now / Blogs / <$mt:BlogName$> / <$mt:EntryTitle$> - blogs.</mt:setvarblock>
+  <mt:setvarblock name="omni_prop38">blog</mt:setvarblock>
+  <mt:setvarblock name="omni_hier1">Chicago Now:blogs:<$mt:BlogName$></mt:setvarblock>
+  <mt:setvarblock name="omni_hier2">blogs:<$mt:BlogName$></mt:setvarblock>
+  <mt:setvarblock name="omni_hier4">blogs:<$mt:BlogName$></mt:setvarblock>
+  <mt:setvarblock name="omni_evar21">blog</mt:setvarblock>
+</mt:section><?php
+include('<$mt:var name="cnstaticpath"$>php/MTUser.class.php');
+$user = new MTUser('<$mt:UserSessionCookieName$>');
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <$mt:include module="CN: HTML Head"$>
+    <script src="<mt:var name="cnstatic">js/jquery.phpdate.js" type="text/javascript"></script>
+    <MTEntryPrevious><link rel="prev" href="<$MTEntryPermalink$>" title="<$MTEntryTitle encode_html="1"$>" rel="bookmark" /></MTEntryPrevious>
+    <MTEntryNext><link rel="next" href="<$MTEntryPermalink$>" title="<$MTEntryTitle encode_html="1"$>" rel="bookmark" /></MTEntryNext>
+    <$MTEntryTrackbackData$>
+    <title><$MTEntryTitle encode_html="1"$> - <$MTBlogName encode_html="1"$></title>
+</head>
+<body id="<$mt:BlogTemplateSetID$>" class="main-index">
+    <$mt:include module="CN: Banner Header"$>
+
+    <$mt:include module="CN: Blog Header"$>
+
+    <div id="content" class="pkg">
+        <div id="alpha">
+            <$mt:include widget="Ad: Main Column, Placement 1"$>
+            <$MTEntryTrackbackData$>
+            <div id="entry-<$MTEntryID$>" class="hentry entry summary">
+                <h1 class="entry-title"><$mt:EntryTitle$></h1>
+                <div class="entry-header pkg">
+                    <$mt:include module="CN: Userpic" userpic_size="24"$>
+                    <div class="entry-meta">
+                        <span class="vcard author"><a class="fn url" href="<$mt:CNProfileURL$>"><$mt:AuthorDisplayName$></a></span> on <abbr class="published" title="<$MTEntryDate format_name="iso8601"$>"><$MTEntryDate format="%m.%d.%y"$></abbr>
+                        <MTIfCommentsActive>| <a href="<$MTEntryPermalink$>#comments" class="comment"><$MTEntryCommentCount singular="1 comment" plural="# comments" none="no comments"$></a></MTIfCommentsActive>
+<mt:ignore>
+                        | <span class="favorite-this"><a href="">favorite this</a></span>
+</mt:ignore>
+                        | <span class="share-this"><script type="text/javascript" src="http://w.sharethis.com/button/sharethis.js#publisher=a51338a4-e049-4525-b0a7-7ccb8f7136c6&amp;type=website&amp;buttonText=share&amp;send_services=email%2Caim%2Csms%2Cmyspace&amp;post_services=twitter%2Cfacebook%2Cdigg%2Cdelicious%2Cybuzz%2Cstumbleupon%2Cfriendfeed%2Creddit%2Cmyspace%2Cgoogle_bmarks%2Cwindows_live%2Cnewsvine"></script></span>
+                    </div>
+                </div>
+                <div class="entry-content">
+                  <$mt:EntryBody$>
+                </div>
+<MTIfNonEmpty tag="EntryMore" convert_breaks="0">
+                <div id="more" class="entry-content more">
+                  <$MTEntryMore$>
+                </div>
+</MTIfNonEmpty>
+
+                <div class="entry-footer">
+                    <p><MTIfNonEmpty tag="EntryCategory">Published in <MTEntryCategories glue=', '><a href="<$MTCategoryArchiveLink$>" rel="tag"><$MTCategoryLabel$></a></MTEntryCategories></MTIfNonEmpty>
+                    <MTEntryIfTagged><MTIfNonEmpty tag="EntryCategory">and tagged <mt:Else>Tagged </MTIfNonEmpty>
+                    <MTEntryTags glue=', '><a href="<$MTTagSearchLink$>" rel="tag"><$MTTagName$></a></MTEntryTags>
+                    </MTEntryIfTagged></p>
+                </div>
+
+                <$mt:include module="CN: Recommended Posts"$>
+
+            </div><!-- end .entry.summary -->
+
+            <$mt:include module="CN: Comments"$>
+
+        </div><!-- end #alpha -->
+        <div id="beta">
+            <$mt:cnwidgetset name="Blog Permalink"$>
+        </div><!-- end #beta -->
+    </div>
+    <$mt:include module="CN: Banner Footer"$>
+</body>
+</html>

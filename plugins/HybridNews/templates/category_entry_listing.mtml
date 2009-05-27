@@ -1,0 +1,43 @@
+<mt:Include module="CN: Global Variables">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <$mt:include module="CN: HTML Head"$>
+    <title><$MTBlogName encode_html="1"$>: <$MTArchiveTitle$> Archives</title>
+<MTIf name="datebased_archive">
+    <MTArchivePrevious><link rel="prev" href="<$MTArchiveLink$>" title="<$MTArchiveTitle encode_html="1"$>" /></MTArchivePrevious>
+    <MTArchiveNext><link rel="next" href="<$MTArchiveLink$>" title="<$MTArchiveTitle encode_html="1"$>" /></MTArchiveNext>
+</MTIf>
+</head>
+<body id="<$mt:BlogTemplateSetID$>" class="main-index">
+    <$mt:include module="CN: Banner Header"$>
+
+    <$mt:include module="CN: Blog Header"$>
+
+    <div id="content" class="pkg">
+        <div id="alpha">
+            <$mt:include widget="Ad: Main Column, Placement 1"$>
+            <h1 id="page-title" class="archive-title"><$MTArchiveTitle$> Archives</h1>
+<MTUnless name="datebased_archive"><$mt:setvar name="limit" value="auto"$></MTUnless>
+<$mt:include module="CN: Blog Top"$>
+<mt:Entries>
+<$mt:include module="CN: Entry Summary" summary_type="full"$>
+</mt:Entries>
+<$mt:include module="CN: Blog Bottom"$>
+
+            <div id="pagination">
+                <MTArchivePrevious><a href="<$MTArchiveLink$>" class="knockout-uh">&laquo; <$MTArchiveTitle$></a> |</MTArchivePrevious>
+                <a href="<$MTLink template="main_index"$>" class="knockout-uh">Main Index</a> |
+                <a href="<$MTLink template="archive_index"$>" class="knockout-uh">Archives</a>
+                <MTArchiveNext>| <a href="<$MTArchiveLink$>" class="knockout-uh"><$MTArchiveTitle$> &raquo;</a></MTArchiveNext>
+            </div>
+        </div><!-- end #alpha -->
+        <div id="beta">
+            <$mt:cnwidgetset name="Generic Sidebar"$>
+        </div><!-- end #beta -->
+    </div>
+    <$mt:include module="CN: Banner Footer"$>
+</body>
+</html>
+

@@ -1,0 +1,227 @@
+<mt:ignore>
+<!-- Display comments for the entry/page or commenting form if entry/page is accepting comments -->
+</mt:ignore>
+<MTIfCommentsActive>
+<MTIfCommentsAccepted>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function(){
+    $("#comment-submit").click(function(){
+        if (mtGetUser()) {
+          var authorVal = mtGetUser().name;
+          var emailVal = mtGetUser().email;
+          var urlVal = mtGetUser().url;
+        } else {
+          var authorVal = $("#comment-author").val();
+          var emailVal = $("#comment-email").val();
+          var urlVal = $("#comment-url").val();
+        }
+        $("#comment-submit").attr("disabled","disabled");
+        $("#comment-text").attr("disabled","disabled");
+        if ($("#comment-armor")) {
+           $("#comment-armor").val('<$mt:BlogSitePath encode_sha1="1"$>');
+        }
+        // var commentForm = $("#comments-form");
+        // mtCommentOnSubmit(commentForm);
+        var staticVal = $("#comment-static").val();
+        var entryIdVal = $("#comment-entry_id").val();
+        var langVal = $("#comment-lang").val();
+        var parentIdVal = $("#comment-reply").val();
+        var armorVal = $("#comment-armor").val();
+        var previewVal = $("#comment-prev").val();
+        var sidVal = $("#comment-sid").val();
+        if($("#captcha_code")) {
+            var capthchaVal = $("#captcha_code").val();
+            var tokenVal = $("input[name='token']").val();
+        }
+        var replyVal = $("#comment-reply").val();
+        var textVal = $("#comment-text").val();
+
+        var postData = { static: staticVal, entry_id: entryIdVal, parent_id: parentIdVal, armor: armorVal, comment_reply: replyVal, author: authorVal, email: emailVal, url: urlVal, text: textVal, captcha_code: capthchaVal, token: tokenVal};
+        $.post("<$MTCGIPath$><$MTCommentScript$>", postData,
+               function(data){
+                  $("#comments-list").html(data);
+                  $("#comment-submit").removeAttr("disabled");
+                  $("#comment-text").removeAttr("disabled");
+                  var commentError = $('#comments-list #comment-error');
+                  if (commentError.length > 0) {
+                      $("#comment-preview-comment").fadeIn(1000);
+                  } else {
+                      $('#comment-preview-comment .comment-content-inner').html(defaultCommentText);
+                      $("#comment-text").val("");
+                  };
+            }
+        );
+        return false;
+    });
+    function getName() {
+       var authorVal;
+       if (mtGetUser()) {
+          authorVal = mtGetUser().name;
+        } else {
+          authorVal = $("#comment-author").val();
+        }
+        if (!authorVal || authorVal == "") authorVal = "<$mt:AnonymousUserDisplayName escape_js="1"$>";
+        return authorVal;
+    };
+    var defaultCommentText = "<em>what will you say?</em>";
+    $('#comment-preview').hide(); // hide comment preview button
+    $('#comment-preview-comment').hide(); // hide comment preview
+    $('#comment-text').focus(function(){
+        var a = getName();
+        $('#comment-preview-comment p.author a').html(a); // set comment author value
+        $("#comment-preview-comment").fadeIn(1000); // hide comment preview
+    });
+    var $comment = '';
+    $('#comment-author').keyup(function() {
+      var a = getName();
+      $('#comment-preview-comment p.author a').html( a );
+    });
+    $('#comment-text').keyup(function() {
+        $comment = $(this).val();
+        $comment = ($comment.length? $comment : defaultCommentText)
+        $comment = $comment.replace(/\n/g, "<br />").replace(/\n\n+/g, '<br /><br />').replace(/(<\/?)script/g,"$1noscript");
+        $('#comment-preview-comment .comment-content-inner').html( $comment );
+    });
+
+    $('#comment-preview-comment a').click(function(){ return false }); // disable links
+    $('#comment-preview-comment abbr.published').html( $.PHPDate("M d, Y", new Date())); // set date
+    $('#comment-preview-comment abbr.published').attr('title',$.PHPDate("c", new Date())); // set iso 8601 date
+    
+    $('.reply-comment-link').hide(); // hide reply text
+    $('[title="Reply"]').one('click', function(){
+        mtSignInOnClick('comment-greeting');
+    }).click(function(){
+        $('.reply-comment-link a span').html($(this).parent().find('.author a').html());
+        $('.reply-comment-link').show(); // show reply text when reply link is clicked
+    }); 
+    $('#comment-reply').click(function(){ $('.reply-comment-link').toggle() }); // toggle reply text when reply checkbox is checked
+    $("#comment-submit").click(function(){
+        $('#comment-preview-comment').fadeOut(1000);; // hide comment preview
+    });
+    $('p#comment-greeting').greet({
+      loggedInMessage: 'Welcome back, %u! (%p)',
+      <mt:IfRegistrationRequired>loggedOutMessage: '%i to leave a comment.',<mt:else>loggedOutMessage: '%i to create a custom profile for yourself.',</mt:IfRegistrationRequired>
+      loginText: 'Sign in',
+      mode: 'mtpro',
+      editProfileText: 'edit profile',
+      returnToURL: '<mt:EntryPermalink>#comments'
+    });
+<mt:IfRegistrationRequired>
+    $('#comment-form').onauthchange( function(e, u) { 
+      if (u.is_authenticated) $(this).show();
+      else $(this).hide();
+    });
+</mt:IfRegistrationRequired>
+    $('#comment-form .userpic').onauthchange( function(e, u) {
+      if (u.is_authenticated) { 
+        $(this).html( '<img width="48" height="48" src="' + u.userpic + '" />' );
+        $('#comments-open-data').hide();
+        $('#comment-preview-comment p.author a').html(u.name); // set comment author value
+      } else {
+        $(this).html( '<img width="48" height="48" src="<$mt:var name="cnstatic"$>images/pothole.jpg" />' );
+        $('#comments-open-data').show();
+      }
+    });
+});
+</script>
+</MTIfCommentsAccepted>
+
+<div id="comments">
+    <div id="comments-list">
+      <h3 class="section-title"><$MTEntryCommentCount singular="1 Comment" plural="# Comments" none="No Comments"$></h3>
+
+<mt:UseThreadedComments>
+  <mt:Comments> <!-- Comments block tag (note: comments header and footer tags have been ommitted from this example) -->
+    <mt:IfCommentParent> <!-- If comment has a parent comment. We ignore this, as we just want the top-level-parent comments -->
+    <mt:Else> <!-- If comment doesn't have a top-level-parent -->
+        <$mt:Include module="CN: Individual Comment"$> <!-- Display comment (top level parent) -->
+        <mt:CommentReplies> <!-- Loop through the reply comments -->
+           <$mt:Include module="CN: Individual Comment"$> <!-- Display comment (reply comment, which may be a parent of more replies) -->
+           <$mt:CommentRepliesRecurse$> <!-- For each reply comment, recursively display any reply comments -->    
+        </mt:CommentReplies>
+    </mt:IfCommentParent>
+  </mt:Comments>
+<mt:else>
+  <mt:Comments>
+        <$mt:Include module="CN: Individual Comment"$>
+  </mt:Comments>
+</mt:UseThreadedComments>
+
+    </div>
+
+    <mt:ignore>
+    <!-- Display commenting form if entry/page is accepting comments -->
+    </mt:ignore>
+    <MTIfCommentsAccepted>
+    <div class="comments-open" id="comments-open">
+        <mt:ignore>
+        <!-- Display greeting for users if blog allows users to register locally -->
+        </mt:ignore>
+        <p id="comment-greeting"></p>
+
+        <div class="pkg comment" id="comment-preview-comment"> 
+          <p class="author">
+            <span class="vcard"><a href="#" title="link to commenter url here"></a> said:</span>
+          </p>
+          <div class="comment-content pkg">
+ 	      <div class="comment-content-inner"> 
+ 	        <em>what will you say?</em> 
+              </div> 
+              <div class="comment-footer">
+                <span class="date">Posted on <a href="#"><abbr title="iso 8601 date will be here" class="published">date</abbr></a></span>
+              </div>
+          </div> 
+        </div> 
+
+        <form method="post" action="<$MTCGIPath$><$MTCommentScript$>" 
+                  name="comments_form" id="comments-form" onsubmit="return mtCommentOnSubmit(this)">
+            <div id="comments-form-inner">
+                <input type="hidden" id="comment-static" name="static" value="1" />
+                <input type="hidden" id="comment-entry_id" name="entry_id" value="<$MTEntryID$>" />
+                <input type="hidden" id="comment-lang" name="__lang" value="<$MTBlogLanguage$>" />
+                <input type="hidden" id="comment-parent_id" name="parent_id" value="<$MTCommentParentID$>" id="comment-parent-id" />
+                <input type="hidden" id="comment-armor" name="armor" value="1" />
+                <input type="hidden" id="comment-previewx" name="preview" value="" />
+                <input type="hidden" id="comment-sid" name="sid" value="" />
+
+                <div id="comment-form" class="pkg">
+                    <div class="userpic pkg"><img width="48" height="48" alt="Default Userpic" src="<$mt:StaticWebPath$>images/default-userpic-50.jpg" /></div>
+
+                    <div id="comments-open-data">
+                        <div id="comment-form-name" class="pkg">
+                            <label for="comment-author">Name</label>
+                            <input id="comment-author" name="author" size="30" value="" onfocus="mtCommentFormOnFocus()" />
+                        </div>
+                        <div id="comment-form-email" class="pkg">
+                            <label for="comment-email">Email Address</label>
+                            <input id="comment-email" name="email" size="30" value="" onfocus="mtCommentFormOnFocus()" />
+                        </div>
+                        <div id="comment-form-url" class="pkg">
+                            <label for="comment-url">URL</label>
+                            <input id="comment-url" name="url" size="30" value="" onfocus="mtCommentFormOnFocus()" />
+                        </div>
+                        <div id="comment-form-remember-me" class="pkg checkbox">
+                            <input type="checkbox" id="comment-bake-cookie" name="bakecookie" onclick="mtRememberMeOnClick(this)" value="1" accesskey="r" />
+                            <label for="comment-bake-cookie">Remember personal info?</label>
+                        </div>
+                    </div>
+                    <div id="comment-form-reply" style="display:none" class="pkg checkbox">
+                        <input type="checkbox" id="comment-reply" name="comment_reply" value="" onclick="mtSetCommentParentID()" />
+                        <label for="comment-reply" id="comment-reply-label"></label>
+                    </div>
+
+                    <div id="comments-open-text">
+                        <textarea id="comment-text" name="text" rows="15" cols="50" onfocus="mtCommentFormOnFocus()"></textarea>
+                        <div class="form-footer pkg">
+                            <MTIfAllowCommentHTML><span class="help">Some HTML is permitted: <span>a</span>, <span>strong</span>, <span>em</span></span></MTIfAllowCommentHTML>
+                            <input type="submit" accesskey="s" name="post" id="comment-submit" value="Submit" />
+                        </div>
+                        <div id="comments-open-captcha"></div>
+                    </div>
+                </div>
+            </div><!-- end #comment-form-inner -->
+        </form>
+    </div>
+    </MTIfCommentsAccepted>
+</div>
+</MTIfCommentsActive>

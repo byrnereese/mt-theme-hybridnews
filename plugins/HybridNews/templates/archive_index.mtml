@@ -1,0 +1,91 @@
+<mt:var name="archive_index" value="1">
+<mt:Include module="CN: Global Variables">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <$mt:include module="CN: HTML Head"$>
+    <title><$MTBlogName encode_html="1"$>: Archives</title>
+</head>
+<body id="<$mt:BlogTemplateSetID$>" class="archive-list">
+    <$mt:include module="CN: Banner Header"$>
+
+    <$mt:include module="CN: Blog Header" active="archive_index"$>
+
+    <div id="content" class="pkg">
+        <div id="alpha">
+            <$mt:include widget="Ad: Main Column, Placement 1"$>
+            <h1 id="page-title" class="archive-title"><$MTBlogName$> Archives</h1>
+
+<$mt:include module="CN: Blog Top"$>
+<div class="entry-listing">
+    <ul>
+<MTEntries lastn="50">
+<mt:setvarblock name="thumbnail"><mt:EntryAssets lastn="1"><img src="<mt:AssetThumbnailURL width="125"$>" alt="<$mt:AssetLabel encode_html="1"$>" /></mt:EntryAssets></mt:setvarblock>
+                    <li class="pkg">
+<mt:if name="thumbnail" ne="">
+                        <a href="<$mt:EntryPermalink$>"><$mt:var name="thumbnail"$></a>
+</mt:if>
+                        <div class="entry-header pkg">
+                          <h2><a href="<$mt:EntryPermalink$>"><$mt:EntryTitle encode_html="1"$></a></h2>
+                          <$mt:include module="CN: Userpic" userpic_size="24" userpic_type="profile"$>
+                          <div class="entry-meta<mt:EntryIfTagged tag="@featured"> featured</mt:EntryIfTagged>">
+                            <span class="vcard author"><a href="<$mt:CNProfileURL$>"><$mt:EntryAuthorDisplayName$></a></span> on <abbr class="published" title="<$MTEntryDate format_name="iso8601"$>"><$MTEntryDate format="%m.%d.%y"$></abbr>
+                            <MTIfCommentsActive>| <a href="<$MTEntryPermalink$>#comments" class="comment"><$MTEntryCommentCount singular="1 comment" plural="# comments" none="no comments"$></a></MTIfCommentsActive>
+                          </div>
+                          <p class="excerpt"><$mt:EntryExcerpt words="15"$></p>
+                        </div>
+                    </li>
+</MTEntries>
+    </ul>
+</div>
+<$mt:include module="CN: Blog Bottom"$>
+
+<mt:ignore>
+    <!-- List of author archives, if category author are enabled -->
+    <MTIfArchiveTypeEnabled archive_type="Author">
+                                <div class="archive-author archive">
+        <MTArchiveList archive_type="Author">
+            <MTArchiveListHeader>
+                                    <h2 class="archive-header">Author Archives</h2>
+                                    <div class="archive-content">
+                                        <ul class="archive-list">
+            </MTArchiveListHeader>
+                                            <li class="archive-list-item"><a href="<$MTArchiveLink$>"><$MTArchiveTitle$></a></li>
+            <MTArchiveListFooter>
+                                        </ul>
+                                    </div>
+            </MTArchiveListFooter>
+        </MTArchiveList>
+                                </div>
+    </MTIfArchiveTypeEnabled>
+</mt:ignore>
+
+
+<mt:ignore>
+    <!-- List of entry archives, if entry archives are enabled -->
+<MTIfArchiveTypeEnabled archive_type="Individual">
+                            <div class="archive-individual archive-date-based archive">
+    <MTArchiveList archive_type="Individual">
+        <MTArchiveListHeader>
+                                <div class="archive-content">
+                                    <ul class="archive-list">
+        </MTArchiveListHeader>
+                                        <li class="archive-list-item"><$MTArchiveDate format="%Y.%m.%d"$>: <a href="<$MTArchiveLink$>"><$MTArchiveTitle$></a></li>
+        <MTArchiveListFooter>
+                                    </ul>
+                                </div>
+        </MTArchiveListFooter>
+    </MTArchiveList>
+                            </div>
+</MTIfArchiveTypeEnabled>
+</mt:ignore>
+
+        </div><!-- end #alpha -->
+        <div id="beta">
+            <$mt:cnwidgetset name="Generic Sidebar"$>
+        </div><!-- end #beta -->
+    </div>
+    <$mt:include module="CN: Banner Footer"$>
+</body>
+</html>

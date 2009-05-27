@@ -1,0 +1,52 @@
+<mt:unless name="system_template">
+<mt:unless name="php_included">
+<?php include_once('<mt:var name="cnstaticpath">php/date_utils.php'); ?>
+<mt:var name="php_included" value="1">
+</mt:unless>
+</mt:unless>
+<$MTEntryTrackbackData$>
+            <div id="entry-<$MTEntryID$>" class="hentry entry summary<mt:if name="__first__"> first</mt:if>">
+                <h3 class="entry-title"><a href="<$mt:EntryPermalink$>" rel="bookmark"><$mt:EntryTitle$></a></h3>
+                <div class="entry-header pkg">
+                    <$mt:include module="CN: Userpic" userpic_size="24" userpic_type="author"$>
+                    <div class="entry-meta">
+                        <span class="vcard author"><a class="fn url" href="<$mt:CNProfileURL$>"><$mt:AuthorDisplayName$></a></span> posted <abbr class="published" title="<$MTEntryDate format_name="iso8601"$>"><mt:unless name="system_template"><?=relative_time('<$mt:EntryDate format="%Y-%m-%d %H:%M:%S"$>');?><mt:else><$MTEntryDate format="%m.%d.%y"$></mt:unless></abbr>
+                        <MTIfCommentsActive>| <a href="<$MTEntryPermalink$>#comments" class="comment"><$MTEntryCommentCount singular="1 comment" plural="# comments" none="no comments"$></a></MTIfCommentsActive>
+                        | <span class="share-this"><script type="text/javascript" src="http://w.sharethis.com/button/sharethis.js#publisher=a51338a4-e049-4525-b0a7-7ccb8f7136c6&amp;type=website&amp;buttonText=share&amp;send_services=email%2Caim%2Csms%2Cmyspace&amp;post_services=twitter%2Cfacebook%2Cdigg%2Cdelicious%2Cybuzz%2Cstumbleupon%2Cfriendfeed%2Creddit%2Cmyspace%2Cgoogle_bmarks%2Cwindows_live%2Cnewsvine"></script></span>
+                    </div>
+                </div>
+<mt:unless name="summary_type" eq="full">
+                <div class="entry-content pkg">
+<mt:section trim="1">
+<mt:if tag="EntryFeaturedImage">
+  <mt:setvarblock name="aid"><mt:EntryFeaturedImage></mt:setvarblock>
+  <mt:setvarblock name="thumbnail"><mt:IfNonEmpty tag="EntryFeaturedImage"><mt:EntryFeaturedImageAsset id="$aid"><img src="<mt:AssetThumbnailURL width="190"$>" alt="<$mt:AssetLabel encode_html="1"$>" /></mt:EntryFeaturedImageAsset></mt:IfNonEmpty></mt:setvarblock>
+<mt:else>
+  <mt:setvarblock name="thumbnail"><mt:EntryAssets lastn="1"><img src="<mt:AssetThumbnailURL width="190"$>" alt="<$mt:AssetLabel encode_html="1"$>" /></mt:EntryAssets></mt:setvarblock>
+</mt:if>
+                  <mt:if name="thumbnail"><div class="featured-image"><a href="<$mt:EntryPermalink$>"><$mt:var name="thumbnail"$></a></div></mt:if>
+                  <$mt:EntryExcerpt words="120"$>
+                </div>
+                <div class="entry-more-link">
+                    <a href="<$mt:EntryPermalink$>#more" rel="bookmark">Continue reading...</a>
+                </div>
+</mt:section>
+<mt:else>
+                <div class="entry-content pkg">
+                  <$mt:EntryBody$>
+                </div>
+<MTIfNonEmpty tag="EntryMore" convert_breaks="0">
+                <div class="entry-more-link">
+                    <a href="<$mt:EntryPermalink$>#more" rel="bookmark">Continue reading...</a>
+                </div>
+</MTIfNonEmpty>
+
+</mt:unless>
+                <div class="entry-footer">
+                    <mt:setvarblock name="pubinfo" trim="1"><mt:if name="thisblog"><mt:if tag="EntryBlogID" ne="$thisblog">in <a href="<mt:EntryBlogURL>"><mt:EntryBlogName></a> </mt:if></mt:if><MTIfNonEmpty tag="EntryCategory">in <MTEntryCategories glue=', '><a href="<$MTCategoryArchiveLink$>" rel="tag"><$MTCategoryLabel$></a></MTEntryCategories></MTIfNonEmpty></mt:setvarblock>
+                    <p><MTIfNonEmpty name="pubinfo">Published <mt:var name="pubinfo"></MTIfNonEmpty>
+                    <MTEntryIfTagged><MTIfNonEmpty name="pubinfo">and tagged <mt:Else>Tagged </MTIfNonEmpty>
+                    <MTEntryTags glue=', '><a href="<$mt:CGIPath$><$mt:SearchScript$>?IncludeBlogs=<$mt:var name="searchinc"$>&tag=<$mt:TagName regex_replace="/\s/g","+" url_encode="1"$>&limit=20" rel="tag"><$MTTagName$></a></MTEntryTags>
+                    </MTEntryIfTagged></p>
+                </div>
+            </div><!-- end .entry.summary -->

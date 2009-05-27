@@ -1,0 +1,6 @@
+<mt:setvarblock name="nav_include"><$mt:var name="GlobalSitePath"$>navigation.html</mt:setvarblock>
+<mt:unless name="system_template">
+<?php include('<$mt:var name="nav_include"$>'); ?>
+<mt:else>
+<$mt:include file="$nav_include"$>
+</mt:unless>

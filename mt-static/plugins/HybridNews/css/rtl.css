@@ -1,0 +1,22 @@
+/**
+ * RTL Stylesheet
+ * This style is for a text direction of right to left
+ * Use this style if it applies to your language
+ *
+ * Needs work from someone that uses an RTL language
+ *
+ * @since 0.5
+ * @package Hybrid
+ * @subpackage CSS
+ */
+
+/* Set all value to align right */
+html, body, div, span, object, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	text-align: right;
+	direction: right;
+	}
+
+pre, pre code {
+	text-align: left;
+	direction: left;
+	}

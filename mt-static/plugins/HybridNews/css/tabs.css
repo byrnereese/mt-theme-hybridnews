@@ -1,0 +1,143 @@
+/**
+ * Tabs Stylesheet
+ * To be used with the Hybrid Tabs plugin/widget
+ *
+ * @since 0.5
+ * @package Hybrid
+ * @subpackage CSS
+ */
+
+/**
+* Primary widget tabs
+************************************************/
+#primary .widget-tabs {
+	overflow: hidden;
+	padding: 0;
+	margin: 0 0 18px 0;
+	background: transparent;
+	}
+#primary .widget-tabs ul.tabs {
+	display: block !important;
+	width: 270px;
+	overflow: hidden;
+	list-style: none;
+	margin: 0;
+	}
+#primary .widget-tabs li.t {
+	float: left;
+	display: inline;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	}
+#primary .widget-tabs li.t a {
+	display: block;
+	float: left;
+	margin: 0 4px 0 0;
+	padding: 6px 9px;
+	font-weight: bold;
+	color: #ddd;
+	background: #2c3c4b;
+	}
+#primary .widget-tabs li.t a:hover {
+	background: #2f465d;
+	text-decoration: none;
+	}
+#primary .widget-tabs li.t a.tab-current {
+	color: #2f6eb9;
+	background: #fff;
+	}
+#primary .widget-tabs .tab-content {
+	padding: 18px 15px 6px 15px;
+	background: #fff;
+	}
+
+/**
+* Secondary widget tabs
+************************************************/
+#secondary .widget-tabs {
+	overflow: hidden;
+	padding: 0;
+	margin: 0 0 18px 0;
+	background: transparent;
+	}
+#secondary .widget-tabs ul.tabs {
+	display: block !important;
+	width: 270px;
+	overflow: hidden;
+	list-style: none;
+	margin: 0;
+	}
+#secondary .widget-tabs li.t {
+	float: left;
+	display: inline;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	}
+#secondary .widget-tabs li.t a {
+	display: block;
+	float: left;
+	margin: 0 4px 0 0;
+	padding: 6px 9px;
+	font-weight: bold;
+	color: #ddd;
+	background: #2c3c4b;
+	}
+#secondary .widget-tabs li.t a:hover {
+	background: #2f465d;
+	text-decoration: none;
+	}
+#secondary .widget-tabs li.t a.tab-current {
+	color: #2f6eb9;
+	background: #fff;
+	}
+#secondary .widget-tabs .tab-content {
+	padding: 18px 15px 6px 15px;
+	background: #fff;
+	}
+
+/**
+* Content area widget tabs
+************************************************/
+.content .widget-tabs {
+	overflow: hidden;
+	padding: 0;
+	margin: 0 0 18px 0;
+	background: transparent;
+	}
+.content .widget-tabs ul.tabs {
+	display: block !important;
+	overflow: hidden;
+	list-style: none;
+	margin: 0;
+	}
+.content .widget-tabs li.t {
+	float: left;
+	display: inline;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	}
+.content .widget-tabs li.t a {
+	display: block;
+	float: left;
+	margin: 0 4px 0 0;
+	padding: 6px 9px;
+	font-weight: bold;
+	color: #2f6eb9;
+	background: #fff;
+	}
+.content .widget-tabs li.t a:hover {
+	color: #ddd;
+	background: #2f465d;
+	text-decoration: none;
+	}
+.content .widget-tabs li.t a.tab-current {
+	color: #ddd;
+	background: #2c3c4b;
+	}
+.content .widget-tabs .tab-content {
+	padding: 18px 0 0 0;
+	background: #fff;
+	}

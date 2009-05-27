@@ -1,0 +1,74 @@
+<mt:setvarblock name="footer_include"><$mt:var name="GlobalSitePath"$>footer.html</mt:setvarblock>
+<mt:unless name="system_template">
+<?php include('<$mt:var name="footer_include"$>'); ?>
+<mt:else>
+<$mt:include file="$footer_include"$>
+</mt:unless>
+
+<$mt:var name="html_body_footer"$>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-5700849-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+<mt:unless tag="CNDebugMode">
+<!-- SiteCatalyst code version: H.1.
+     Copyright 1997-2005 Omniture, Inc. More info available at
+     http://www.omniture.com -->
+
+<script type="text/javascript">
+<!--
+s.pageName="<$mt:var name="omni_channel"$>";
+s.prop38="<$mt:var name="omni_prop38"$>";
+s.eVar21="<$mt:var name="omni_evar21"$>";
+	
+s.server="chicagonow.com"; 
+s.channel="<$mt:var name="omni_channel"$>";
+s.prop20=""
+	
+/* E-commerce Variables */
+s.events=""; 
+s.eVar20="Chicagonow.com";
+
+s.hier1="<$mt:var name="omni_hier1"$>"; 
+s.hier2="<$mt:var name="omni_hier2"$>";
+s.hier4="<$mt:var name="omni_hier4"$>";
+	
+var imgArray = document.images;
+var iframeArray = document.getElementsByTagName("iframe");
+var scriptArray = document.getElementsByTagName("script");
+var isAdBlocked = 0;
+
+if(window.SymError || window.SymWinOpen || window.SymRealWinOpen) {
+  isAdBlocked=1;
+}
+if (!isAdBlocked) {
+  for (var i=0; i<imgArray.length; i++)	{
+    if(imgArray[i].style.display == 'none') { isAdBlocked=1; break; } 
+  }
+}
+if (!isAdBlocked) {
+  for (var j=0; j<iframeArray.length; j++) {
+    if (iframeArray[j].style.display == 'none') { isAdBlocked=1; break; }
+  }
+}
+if (!isAdBlocked) {
+  for (var j=0; j<scriptArray.length; j++) {
+    if (scriptArray[j].style.display == 'none') { isAdBlocked=1; break; } 
+  }
+}
+if(isAdBlocked) { s.prop50="ad blocking"; }
+
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//-->  </script>
+<script language="JavaScript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script><!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.1. -->
+</mt:unless>

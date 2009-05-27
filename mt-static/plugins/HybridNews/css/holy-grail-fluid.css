@@ -1,0 +1,47 @@
+/**
+ * Holy Grail Stylesheet
+ * Creates the Holy Grail (fluid width) of three-column layouts
+ * Also makes each column an equal height
+ * Primary (fixed) / Content (fluid) / Secondary (fixed)
+ *
+ * @link http://www.alistapart.com/articles/holygrail
+ * @author Matthew Levine
+ *
+ * @since 0.3
+ * @package Hybrid
+ * @subpackage CSS
+ */
+
+body {
+	min-width: 600px;      /* 2x LC width + RC width */
+	}
+#container {
+	overflow: hidden;
+	padding-left: 200px;   /* LC width */
+	padding-right: 200px;  /* RC width */
+	}
+.content, #primary, #secondary {
+	position: relative;
+	float: left;
+	padding-bottom: 20010px;  /* X + padding-bottom */
+	margin-bottom: -20000px;  /* X */
+	}
+.content {
+	width: 100%;
+	}
+#primary {
+	width: 200px;          /* LC width */
+	right: 200px;          /* LC width */
+	margin-left: -100%;
+	}
+#secondary {
+	width: 200px;          /* RC width */
+	margin-right: -200px;  /* RC width */
+	}
+#footer {
+	clear: both;
+	}
+/*** IE6 Fix ***/
+* html #secondary {
+	left: 200px;           /* RC width */
+	}

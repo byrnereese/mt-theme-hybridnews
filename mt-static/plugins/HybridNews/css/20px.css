@@ -1,0 +1,250 @@
+/**
+ * 20px Stylesheet
+ * Sets up 20px line heights and margins
+ *
+ * @since 0.3
+ * @package Hybrid
+ * @subpackage CSS
+ */
+
+/* Reset values */
+html, body, div, span, object, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+	outline: none;
+	font-size: 100%;
+	background: transparent;
+	border: none;
+	text-decoration: none;
+	}
+
+/*
+* Get rid of deprecated and non-semantic elements
+* These elements should not be used and replaced with proper alternatives
+*/
+b, i, hr, u, center, menu, layer, s, strike, font, xmp {
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+	outline: none;
+	font-size: 100%;
+	font-weight: normal;
+	font-style: normal;
+	background: transparent;
+	border: none;
+	text-decoration: none;
+	}
+font {
+	color: #333;
+	}
+center {
+	text-align: left;
+	}
+
+/* End deprecated elements */
+
+/* Body */
+body {
+	line-height: 20px;
+	font-family: Cambria, Georgia, Times, "Times New Roman", serif;
+	color: #333;
+	background: #fff;
+	}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+	font-style: normal;
+	font-weight: normal;
+	margin: 0 0 20px 0;
+	}
+h1 {
+	font-size: 1.8em;
+	}
+h2 {
+	font-size: 1.7em;
+	}
+h3 {
+	font-size: 1.55em;;
+	}
+h4 {
+	font-size: 1.4em;
+	}
+h5 {
+	font-size: 1.25em;
+	}
+h6 {
+	font-size: 1.1em;
+	}
+
+/* Paragraphs */
+p {
+	margin: 0 0 20px 0;
+	}
+
+/* Lists */
+ol, ul {
+	list-style: none;
+	}
+ul {
+	list-style: disc;
+	margin: 0 0 20px 1.5em;
+	}
+ol {
+	list-style-type: decimal;
+	margin: 0 0 20px 3em;
+	}
+ol ol {
+	list-style: upper-roman;
+	}
+ol ol ol {
+	list-style: lower-roman;
+	}
+ol ol ol ol {
+	list-style: upper-alpha;
+	}
+ol ol ol ol ol {
+	list-style: lower-alpha;
+	}
+ul ul, ol ol, ul ol, ol ul {
+	margin-bottom: 0;
+	}
+dl {
+	margin: 0 0 20px 5px;
+	}
+dl dt {
+	font-weight: bold;
+	margin: 10px 0 0 0;
+	}
+dl dd {
+	margin: 5px 0 0 1.5em;
+	}
+
+/* Text elements */
+strong {
+	font-weight: bold;
+	}
+strong strong {
+	font-weight: normal;
+	}
+em, cite {
+	font-style: italic;
+	}
+em em, cite cite {
+	font-style: normal;
+	}
+abbr {
+	cursor: help;
+	}
+acronym {
+	text-transform: uppercase;
+	border-bottom: 1px dashed #666;
+	cursor: help;
+	}
+big {
+	font-size: 120%;
+	}
+small, sup, sub {
+	font-size: 80%;
+	}
+sup {
+	vertical-align: baseline;
+	position: relative;
+	bottom: 0.3em;
+	}
+sub {
+	vertical-align: baseline;
+	position: relative;
+	top: 0.3em;
+	}
+address {
+	font-style: italic;
+	margin: 0 0 20px 0;
+	}
+li address, dd address {
+	margin: 0;
+	}
+
+/* Blockquotes */
+blockquote {
+	margin: 0 25px;
+	font-style: normal;
+	}
+blockquote em, blockquote cite {
+	font-style: italic;
+	}
+blockquote, q {
+	quotes: none;
+	}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+	}
+
+/* Links */
+a {
+	cursor: pointer;
+	}
+a img {
+	border: none;
+	}
+
+/* Code */
+pre {
+	font: .9em Monaco, monospace, Courier, "Courier New";
+	line-height: 20px;
+	margin-bottom: 20px;
+	padding: 10px;
+	}
+code {
+	font: .9em Monaco, monospace, Courier, "Courier New";
+	}
+pre code {
+	font-size: 1em;
+	}
+
+/* Delete and insert */
+ins, dfn {
+	font-style: italic;
+	text-decoration: none;
+	border-bottom: 1px solid #666;
+	}
+del {
+	text-decoration: line-through;
+	}
+
+/* Object */
+object {
+	margin-bottom: 20px;
+	}
+
+/* Forms */
+input, textarea {
+	font-size: 1em;
+	font-family: Cambria, Georgia, Times, "Times New Roman", serif;
+	padding: 4px;
+	}
+:focus {
+	outline: none;
+	}
+form label {
+	cursor: pointer;
+	}
+option {
+	padding: 1px 2px;
+	}
+
+/* Tables */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin-bottom: 20px;
+	}
+th, td {
+	text-align: left;
+	}
+
+/* Horizontal rule */
+hr {
+	margin-bottom: 20px;
+	}

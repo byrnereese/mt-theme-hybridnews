@@ -1,0 +1,45 @@
+<mt:section trim="1">
+  <mt:Include module="CN: Global Variables">
+  <mt:setvarblock name="omni_channel">Chicago Now:blogs</mt:setvarblock>
+  <mt:setvarblock name="omni_page">Chicago Now / Blogs / <$mt:BlogName$> / <$mt:PageTitle$> - blogs.</mt:setvarblock>
+  <mt:setvarblock name="omni_prop38">blog</mt:setvarblock>
+  <mt:setvarblock name="omni_hier1">Chicago Now:blogs:<$mt:BlogName$></mt:setvarblock>
+  <mt:setvarblock name="omni_hier2">blogs:<$mt:BlogName$></mt:setvarblock>
+  <mt:setvarblock name="omni_hier4">blogs:<$mt:BlogName$></mt:setvarblock>
+  <mt:setvarblock name="omni_evar21">blog</mt:setvarblock>
+</mt:section>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <$mt:include module="CN: HTML Head"$>
+    <MTEntryPrevious><link rel="prev" href="<$MTEntryPermalink$>" title="<$MTEntryTitle encode_html="1"$>" rel="bookmark" /></MTEntryPrevious>
+    <MTEntryNext><link rel="next" href="<$MTEntryPermalink$>" title="<$MTEntryTitle encode_html="1"$>" rel="bookmark" /></MTEntryNext>
+    <$MTEntryTrackbackData$>
+    <title><$mt:PageTitle encode_html="1"$> - <$mt:BlogName encode_html="1"$></title>
+</head>
+<body class="page network" onload="mtEntryOnLoad()">
+    <$mt:include module="CN: Banner Header"$>
+
+    <mt:setvarblock name="active"><$mt:PageBasename$></mt:setvarblock>
+    <$mt:include module="CN: Blog Header" active="$active"$>
+
+    <div id="content" class="pkg">
+        <div id="alpha">
+            <h1 class="page-title"><$mt:PageTitle encode_html="1"$></h1>
+            <div class="entry-content">
+              <$mt:EntryBody$>
+            </div>
+<MTIfNonEmpty tag="EntryMore" convert_breaks="0">
+            <div class="entry-content more">
+              <$MTEntryMore$>
+            </div>
+</MTIfNonEmpty>
+        </div><!-- end #alpha -->
+        <div id="beta">
+            <$mt:cnwidgetset name="Page"$>            
+        </div><!-- end #beta -->
+    </div>
+    <$mt:include module="CN: Banner Footer"$>
+</body>
+</html>
