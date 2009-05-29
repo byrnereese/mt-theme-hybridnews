@@ -46,6 +46,18 @@ template_sets:
     base_path: templates/
     label: 'Hybrid News'
     fields:
+      exclude_cat:
+        name: "Exclude Category from Front Door"
+        description: "Suppress this category from displaying a list of headlines on the front door."
+        type: checkbox
+        obj_type: category
+        tag: CategoryExcludeFromHomepage
+      short_bio:
+        name: "Bio"
+        description: "A bio of yourself. Please try to be brief."
+        type: textarea
+        obj_type: author
+        tag: AuthorBio
       featured_image_asset:
         name: "Featured Image"
         description: "Specifies an image to appear in conjunction with a link to this post when it is featured on the site. This field is required if you want to feature the post."
@@ -58,20 +70,62 @@ template_sets:
         type: text
         obj_type: entry
         tag: EntryHTMLTitle
+      google_news_cat:
+        name: "Google News Category"
+        description: "Choosing a Google News Category can greatly increase your post's chances of appearing on the Google News front page."
+        type: select
+        options: ,American Football,Arts,Athletics,Automotive,Badminton,Baseball,Basketball,Books,Boxing,Business,Celebrities,College Baseball,College Basketball,College Football,College Sports,Companies,Computing,Cricket,Culture,Cycling,Economy,Education,Entertainment,Environment,Field Hockey,Food and Beverage,Geography,Golf,Handball,Headlines,Health,High School Sports,Home and Garden,Humor,Ice Hockey,Industry,Internet,Legal,Lifestyle,Local,Markets,Movies,Music,Nation,Olympics,Op/Ed,Personal Technology,Politics,Racing,Religion,Rugby,Satire,Science,Soccer,Space,Sports,Table Tennis,Technology,Tennis,Theater,Travel,TV,Video Games,Weird News,World
+        obj_type: entry
+        tag: EntryGoogleNewsCategory
+        scope: system
     templates:
+      widget:
+        widget_monthly_archive:
+          label: 'Monthly Archive List'
+        widget_links:
+          label: 'Links'
+        widget_text:
+          label: 'Text'
+        widget_accordian:
+          label: 'Accordian'
       widgetset:      
-        homepage:     
-          label: Homepage
+        archive_p:     
+          label: Archive (primary)
+          widgets: 
+             - 'Accordian'
+        archive_s:     
+          label: Archive (secondary)
+        homepage_p:     
+          label: Homepage (primary)
+          widgets: 
+             - 'Accordian'
+             - 'Text'
+        homepage_s:
+          label: Homepage (secondary)
           widgets:
-#             - 'Search Box'
+             - 'Monthly Archive List'
+             - 'Links'
+        search_p:     
+          label: Search (primary)
+          widgets: 
+             - 'Accordian'
+             - 'Text'
+        search_s:
+          label: Search (secondary)
+          widgets:
+        generic:
+          label: Generic Sidebar
+          widgets:
+             - 'Accordian'
+             - 'Text'
       index:
         sitemap:
-          label: 'Sitemap (Google Web)'
-          outfile: 'sitemap-web.xml'
+          label: 'Sitemap (Web)'
+          outfile: 'sitemap.xml'
           rebuild_me: 0 
         sitemap_news:
-          label: 'Sitemap (Google News)'
-          outfile: 'sitemap-news.xml'
+          label: 'Sitemap (News)'
+          outfile: 'news.xml'
           rebuild_me: 0 
         feed_recent:
           label: 'Feed - Recent Entries'
@@ -148,8 +202,6 @@ template_sets:
           label: 'Individual Comment'
         sidebar:
           label: 'Sidebar'
-        userpic:
-          label: 'Userpic'
         asset_insertion:
           label: 'Asset Insertion'
         sitemap_mod:

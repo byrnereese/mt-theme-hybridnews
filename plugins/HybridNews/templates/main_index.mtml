@@ -26,31 +26,14 @@
 <mt:setvarblock name="excerptcount"><$mt:ExcerptCount$></mt:setvarblock>
         <div id="excerpts">
 <mt:Entries unique="1" lastn="$excerptcount">
-          <div class="hentry post post-<$mt:EntryID$> <mt:if name="__even__">even<mt:else>odd</mt:if> category-<mt:EntryCategory><$mt:CategoryBasename$></mt:EntryCategory> <MTEntryIfTagged><MTEntryTags glue=' '>tag-<$MTTagName regex_replace="/ /g","-"$></MTEntryTags></MTEntryIfTagged>">
-<mt:if tag="EntryFeaturedImage">
-  <mt:setvarblock name="aid"><mt:EntryFeaturedImage></mt:setvarblock>
-  <mt:setvarblock name="thumbnail"><mt:IfNonEmpty tag="EntryFeaturedImage"><mt:EntryFeaturedImageAsset id="$aid"><img src="<mt:AssetThumbnailURL width="150" square="1"$>" alt="<$mt:AssetLabel encode_html="1"$>" class="thumbnail" /></mt:EntryFeaturedImageAsset></mt:IfNonEmpty></mt:setvarblock>
-<mt:else>
-  <mt:setvarblock name="thumbnail"><mt:EntryAssets lastn="1"><img src="<mt:AssetThumbnailURL width="150" square="1"$>" alt="<$mt:AssetLabel encode_html="1"$>" class="thumbnail" /></mt:EntryAssets></mt:setvarblock>
-</mt:if>
-<mt:if name="thumbnail"><div class="featured-image"><a href="<$mt:EntryPermalink$>"><$mt:var name="thumbnail"$></a></div></mt:if>
-            <h2 class="post-title entry-title"><a href="<$mt:EntryPermalink$>" title="<$mt:EntryTitle encode_html="1"$>" rel="bookmark"><$mt:EntryTitle encode_html="1"$></a></h2>
-            <p class="byline"><span class="text">By</span> <span class="author vcard"><a class="url fn n" href="<$mt:EntryAuthorURL$>" title="<$mt:EntryAuthorDisplayName$>"><$mt:EntryAuthorDisplayName$></a></span> <span class="text">on</span> <abbr class="published" title="<$MTEntryDate format_name="iso8601"$>"><$MTEntryDate format="%m %d, %y"$></abbr></p>
-            <div class="entry-summary entry">
-              <p><$mt:EntryExcerpt words="22"$></p>
-            </div>
-            <p class="entry-meta post-meta-data">
-              <MTIfNonEmpty tag="EntryCategory"><span class="categories"><span class="text">Posted in</span> <MTEntryCategories glue=', '><a href="<$MTCategoryArchiveLink$>" rel="category"><$MTCategoryLabel$></a></MTEntryCategories></span></MTIfNonEmpty>
-              <MTEntryIfTagged><span class="tags"> <MTIfNonEmpty tag="EntryCategory"><span class="separator">|</span></MTIfNonEmpty> <span class="text">Tagged</span> <MTEntryTags glue=', '><a href="<$mt:CGIPath$><$mt:SearchScript$>?IncludeBlogs=<$mt:BlogID$>&tag=<$mt:TagName regex_replace="/\s/g","+" url_encode="1"$>&limit=20" rel="tag"><$MTTagName$></a></MTEntryTags></span></MTEntryIfTagged>
-              <MTIfCommentsActive><span class="separator">|</span> <a href="<$MTEntryPermalink$>#comments" class="comments-link" title="Comments on <$mt:EntryTitle encode_html="1"$>"><$MTEntryCommentCount singular="1 Response" plural="# Responses" none="No Responses"$></a></MTIfCommentsActive>
-            </p>
-          </div>
+<$mt:include module="Entry Summary"$>
 </mt:Entries>
         </div><!-- //end excerpts -->
 
         <div id="headlines">
 <mt:var name="count" value="0">
 <mt:TopLevelCategories>
+<mt:unless tag="CategoryExcludeFromHomepage">
 <mt:setvar name="count" op="add" value="1">
 <mt:setvarblock name="odd"><mt:var name="count" op="mod" value="2"></mt:setvarblock>
 
@@ -67,12 +50,20 @@
 </mt:if>
 </mt:Entries>
           </div>
+</mt:unless>
 </mt:TopLevelCategories>
         </div><!-- //end headlines -->
 
       </div><!-- //end .content -->
       </div><!-- //end #content -->
-      <$mt:include module="Sidebar"$>
+
+      <div id="widget-container">
+        <div id="primary" class="aside">
+          <mt:widgetset name="Homepage (primary)">
+        </div>
+        <mt:widgetset name="Homepage (secondary)">
+      </div>
+
       <$mt:include module="Banner Footer"$>
     </div>
   </div>

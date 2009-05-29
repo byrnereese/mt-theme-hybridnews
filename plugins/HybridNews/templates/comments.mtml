@@ -1,15 +1,23 @@
 <MTIfCommentsActive>
-
-<div id="comments">
-    <div id="comments-list">
-      <h3 class="section-title"><$MTEntryCommentCount singular="1 Comment" plural="# Comments" none="No Comments"$></h3>
+        <div id="comments-template">
+          <div id="comments">
+            <div id="comments-list">
+              <h3 id="comments-number" class="comments-header"><$MTEntryCommentCount singular="1 response" plural="# responses" none="No responses"$> to &#8220;<$mt:EntryTitle encode_html="1"$>&#8221;</h3>
 <mt:Comments>
+<mt:if name="__first__">
+              <ol class="comment-list">
+</mt:if>
       <$mt:Include module="Individual Comment"$>
+<mt:if name="__last__">
+              </ol>
+</mt:if>
 </mt:Comments>
-    </div>
+            </div>
+          </div>
+
+          <div class="paged-navigation"></div>
 
 <MTIfCommentsAccepted>
-        <div id="comments-template">
           <div id="respond">
             <h3 id="reply">Leave a Reply</h3>
             <p id="cancel-comment-reply"><a rel="nofollow" id="cancel-comment-reply-link" href="/~breese/wordpress/2009/05/26/kristen-and-jensen-omg-cute/#respond" style="display:none;">Click here to cancel reply.</a></p>
@@ -35,10 +43,6 @@
                     <label for="comment-bake-cookie">Remember personal info?</label>
                   </div>
                 </div>
-                <div id="comment-form-remember-me" class="pkg checkbox">
-                  <input type="checkbox" id="comment-bake-cookie" name="bakecookie" onclick="mtRememberMeOnClick(this)" value="1" accesskey="r" />
-                  <label for="comment-bake-cookie">Remember personal info?</label>
-                </div>
                 <div id="comment-form-reply" style="display:none" class="pkg checkbox">
                   <input type="checkbox" id="comment-reply" name="comment_reply" value="" onclick="mtSetCommentParentID()" />
                   <label for="comment-reply" id="comment-reply-label"></label>
@@ -62,6 +66,6 @@
               </div>
             </form>
           </div>
-        </div>
-<MTIfCommentsAccepted>
+</MTIfCommentsAccepted>
+        </div><!-- //end respond -->
 </MTIfCommentsActive>

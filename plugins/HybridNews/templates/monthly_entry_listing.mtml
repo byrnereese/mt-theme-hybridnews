@@ -1,43 +1,44 @@
-<mt:Include module="CN: Global Variables">
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <$mt:include module="CN: HTML Head"$>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
     <title><$MTBlogName encode_html="1"$>: <$MTArchiveTitle$> Archives</title>
 <MTIf name="datebased_archive">
     <MTArchivePrevious><link rel="prev" href="<$MTArchiveLink$>" title="<$MTArchiveTitle encode_html="1"$>" /></MTArchivePrevious>
     <MTArchiveNext><link rel="next" href="<$MTArchiveLink$>" title="<$MTArchiveTitle encode_html="1"$>" /></MTArchiveNext>
 </MTIf>
+    <$mt:include module="HTML Head"$>
 </head>
-<body id="<$mt:BlogTemplateSetID$>" class="main-index">
-    <$mt:include module="CN: Banner Header"$>
+<body class="ltr page page-7 page-template primary-active secondary-active subsidiary-active">
+  <div id="body-container">
+    <$mt:include module="Banner Header"$>
+    <div id="container">
+      <div id="content"> <!-- Deprecated. Use the .content or .hfeed class for styling instead of #content. -->
+      <div class="hfeed content">
 
-    <$mt:include module="CN: Blog Header"$>
+        <div class="breadcrumb breadcrumbs"><div class="breadcrumb-trail"><span class="breadcrumb-title">Browse:</span> <a href="<$mt:BlogURL$>" title="<$mt:BlogName encode_html="1"$>" class="trail-begin">Home</a> / <span class="trail-end"><$mt:ArchiveTitle$></span></div></div>
 
-    <div id="content" class="pkg">
-        <div id="alpha">
-            <$mt:include widget="Ad: Main Column, Placement 1"$>
-            <h1 id="page-title" class="archive-title"><$MTArchiveTitle$> Archives</h1>
-<MTUnless name="datebased_archive"><$mt:setvar name="limit" value="auto"$></MTUnless>
-<$mt:include module="CN: Blog Top"$>
+        <div class="date-info">
+          <h1 class="date-title"><$mt:ArchiveTitle$></h1>
+          <div class="date-description">
+            You are browsing the archive for <$mt:ArchiveTitle$>.<br />
+          </div>
+        </div>
+
 <mt:Entries>
-<$mt:include module="CN: Entry Summary" summary_type="full"$>
+<$mt:include module="Entry Summary"$>
 </mt:Entries>
-<$mt:include module="CN: Blog Bottom"$>
 
-            <div id="pagination">
-                <MTArchivePrevious><a href="<$MTArchiveLink$>" class="knockout-uh">&laquo; <$MTArchiveTitle$></a> |</MTArchivePrevious>
-                <a href="<$MTLink template="main_index"$>" class="knockout-uh">Main Index</a> |
-                <a href="<$MTLink template="archive_index"$>" class="knockout-uh">Archives</a>
-                <MTArchiveNext>| <a href="<$MTArchiveLink$>" class="knockout-uh"><$MTArchiveTitle$> &raquo;</a></MTArchiveNext>
-            </div>
-        </div><!-- end #alpha -->
-        <div id="beta">
-            <$mt:cnwidgetset name="Generic Sidebar"$>
-        </div><!-- end #beta -->
+      </div><!-- //end .content -->
+      </div><!-- //end #content -->
+
+      <div id="widget-container">
+        <div id="primary" class="aside">
+          <mt:widgetset name="Archive (primary)">
+        </div>
+        <mt:widgetset name="Archive (secondary)">
+      </div>
+
+      <$mt:include module="Banner Footer"$>
     </div>
-    <$mt:include module="CN: Banner Footer"$>
+  </div>
 </body>
 </html>
-

@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" >
-<MTEntries days="3" blog_ids="all">
+<MTEntries days="3">
+<MTEntryIfTagged><mt:setvarblock name="keywords"><MTEntryTags glue=', '><$MTTagName$></MTEntryTags></mt:setvarblock></MTEntryIfTagged>
+<mt:if tag="EntryGoogleNewsCategory" ne="">
+  <mt:if name="keywords">
+    <mt:setvarblock name="keywords" append="1">,<$mt:EntryGoogleNewsCategory$></mt:setvarblock>
+  <mt:else>
+    <mt:setvarblock name="keywords"><$mt:EntryGoogleNewsCategory$></mt:setvarblock>
+  </mt:if>
+</mt:if>
   <url>
     <loc><$MTEntryPermalink encode_xml="1"$></loc>
     <lastmod><MTIfNonZero tag="MTEntryCommentCount"><MTComments lastn="1"><$MTCommentDate utc="1" format="%Y-%m-%dT%H:%M:%S-06:00"$></MTComments><MTElse><$MTEntryModifiedDate utc="1" format="%Y-%m-%dT%H:%M:%S-06:00"$></MTElse></MTIfNonZero></lastmod>
     <news:news>
       <news:publication_date><$MTEntryModifiedDate utc="1" format="%Y-%m-%dT%H:%M:%S-06:00"$></news:publication_date>
       <news:title><$MTEntryTitle encode_xml="1"$></news:title>
-      <MTEntryIfTagged><news:keywords><MTEntryTags glue=', '><$MTTagName$></MTEntryTags></news:keywords></MTEntryIfTagged>
+      <mt:if name="keywords"><news:keywords><mt:var name="keywords"></news:keywords><mt:var name="keywords" value=""></mt:if>
     </news:news>
   </url>
 </MTEntries>

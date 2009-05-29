@@ -1,0 +1,34 @@
+    <div id="tab-set-1" class="widget tabs widget-tabs">
+      <div class="widget-inside">
+        <ul class="tabs">
+          <li class="t1 t"><a class="t1" title="Hot Tags">Hot Tags</a></li>
+          <li class="t2 t"><a class="t2" title="Random">Random</a></li>
+          <li class="t3 t"><a class="t3" title="Archives">Archives</a></li>
+        </ul>
+
+        <div class="tab-content t1">
+          <p>
+<mt:Tags top="20">
+            <a href="javascript:void(0)" onclick="location.href="<$mt:TagSearchLink encode_js="1"$>";return false;" class="tag-link tag-rank-<$mt:TagRank max="10"$>"><$mt:TagName$></a>
+</mt:Tags>
+          </p>
+        </div>
+
+        <div class="tab-content t2">
+          <ul class="random">
+<mt:Entries lastn="4" unique="1">
+            <li><a href="<$mt:EntryPermalink$>" title="<$mt:EntryTitle encode_html="1"$>" rel="bookmark"><$mt:EntryTitle$></a></li>
+</mt:Entries>
+          </ul>
+        </div>
+
+        <div class="tab-content t3">
+          <ul class="archives monthly-archives">
+<mt:ArchiveList archive_type="Monthly">
+            <li><a href="<$mt:ArchiveLink$>"><$mt:ArchiveTitle$></a></li>
+</mt:ArchiveList>
+          </ul>
+        </div>
+
+      </div>
+    </div>

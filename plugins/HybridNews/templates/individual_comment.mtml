@@ -1,35 +1,15 @@
-<mt:SetVarBlock name="current_comment"><mt:CommentID></mt:SetVarBlock>
-
-                <div id="comment-<$MTCommentID$>" class="pkg comment<mt:If name="comment_new" eq="$current_comment"> comment-highlight</mt:If><mt:UseThreadedComments><mt:IfCommentParent> reply</mt:IfCommentParent></mt:UseThreadedComments><mt:IfCommenterIsEntryAuthor> by-author</mt:IfCommenterIsEntryAuthor>">
-<mt:if tag="CommenterUsername" ne="">
-<mt:setvarblock name="commenterlink"><a href="<$mt:CNProfileURL type="commenter"$>"><$MTCommenterName$></a></mt:setvarblock>
-<mt:else>
-<mt:setvarblock name="commenterlink"><$MTCommentAuthorLink$></mt:setvarblock>
-</mt:if>
-                    <p class="author">
-<mt:IfCommentParent>
-                      <span class="vcard"><$mt:var name="commenterlink"$></span> said in reply to <a href="<mt:CommentParent><$mt:CommentLink$></mt:CommentParent>">comment from <mt:CommentParent><$MTCommentAuthor$>:</mt:CommentParent></a>
-<mt:else>
-                      <span class="vcard"><$mt:var name="commenterlink"$> said:</span>
-</mt:IfCommentParent>
-                    </p>
-<mt:if tag="CommenterUsername" ne="">
-                    <$mt:include module="CN: Userpic" userpic_size="48" userpic_type="commenter"$>
-<mt:else>
-                    <$mt:include module="CN: Userpic" userpic_size="48" userpic_type="profile"$>
-</mt:if>
-                    <div class="comment-content pkg">
-                        <$MTCommentBody$>
-                        <div class="comment-footer">
-                            <span class="date">Posted on <a href="<$mt:CommentLink$>"><abbr class="published" title="<$MTCommentDate format_name="iso8601"$>"><$MTCommentDate$></abbr></a></span>
-                            <div class="actions">
-<mt:ignore>
-                                <a href="" class="report">Report</a>
-</mt:ignore>
-<MTIfCommentsAccepted>
-                                <mt:ignore>|</mt:ignore> <$MTCommentReplyToLink$>
-</MTIfCommentsAccepted>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <li id="comment-<$mt:CommentID$>" class="comment <mt:if name="__even__">even<mt:else>odd</mt:if> thread-even depth-1 <mt:IfCommenterIsEntryAuthor>entry-author</mt:IfCommenterIsEntryAuthor>">
+        <$mt:include module="Userpic" userpic_size="80" userpic_type="commenter"$>
+        <div class="comment-meta-data">
+          <div class="comment-author vcard">
+            <cite class="fn"><$MTCommentAuthorLink$></cite>
+          </div>
+          <abbr class="comment-time" title="<$MTCommentDate format_name="iso8601"$>"><$MTCommentDate$></abbr>
+          <span class="separator">|</span> 
+          <a class="permalink" href="<$mt:CommentLink$>" title="Permalink to comment <$mt:CommentID$>">Permalink</a>
+          <span class="separator">|</span> <span class="comment-reply-link"><$MTCommentReplyToLink$></span>
+	</div>
+        <div class="comment-text">
+          <$MTCommentBody$>
+        </div>
+      </li>
