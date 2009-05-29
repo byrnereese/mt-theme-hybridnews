@@ -1,6 +1,61 @@
-<mt:setvarblock name="nav_include"><$mt:var name="GlobalSitePath"$>navigation.html</mt:setvarblock>
-<mt:unless name="system_template">
-<?php include('<$mt:var name="nav_include"$>'); ?>
-<mt:else>
-<$mt:include file="$nav_include"$>
-</mt:unless>
+<div id="navigation">
+  <div id="page-nav" class="page-nav">
+<mt:if name="page_template"><mt:setvarblock name="thispage"><$mt:PageID$></mt:setvarblock></mt:if>
+<mt:Pages tags="@topnav">
+<mt:if name="__first__">
+    <ul class="menu sf-menu">
+</mt:if>
+      <li<mt:if name="main_index"> class="current_page_item"</mt:if>><a href="<$mt:BlogURL$>">Home</a></li>
+      <li class="<mt:if tag="PageID" eq="$thispage">current_page_item </mt:if>page_item page-item-<$mt:PageID$>"><a href="<$mt:PagePermalink$>" title="<$mt:PageTitle encode_html="1"$>"><$mt:PageTitle encode_html="1"$></a></li>
+<mt:if name="__last__">
+    </ul>
+</mt:if>
+</mt:Pages>
+  </div><!-- //end page-nav -->
+  <div id="search-" class="search">
+    <form method="get" class="search-form" id="search-form-" action="<$mt:AdminCGIPath$><$mt:SearchScript$>">
+      <div>
+        <input class="search-text" type="text" name="s" id="search-text-" tabindex="7" value="Search this site..." onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" />
+        <input class="search-submit button" name="submit" type="submit" id="search-submit-" tabindex="8" value="Search" />
+      </div>
+    </form>
+  </div><!-- //end search -->
+</div><!-- //end navigation -->
+<div id="header-container">
+  <div id="header">
+    <h1 id="site-title"><a href="<$mt:BlogURL$>" title="<$mt:BlogName encode_html="1"$>"><span><$mt:BlogName encode_html="1"$></span></a></h1>
+    <h2 id="site-description"><span><$mt:BlogDescription encode_html="1"$></span></h2>
+    <div id="utility-header" class="utility">
+      <div class="widget widget_text widget-widget_text">
+        <div class="widget-inside">
+          <div class="textwidget"><$mt:HybridBannerAdTop$></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- //end header container -->
+<div id="cat-navigation">
+  <div id="cat-nav" class="cat-nav">
+    <ul class="menu sf-menu">
+<mt:TopLevelCategories>
+<mt:SubCatIsFirst><mt:HasParentCategory>      <ul class="children"></mt:HasParentCategory></mt:SubCatIsFirst>
+      <li class="cat-item cat-item-<$mt:CategoryID$>">
+<mt:IfNonZero tag="MTCategoryCount">
+        <a href="<$mt:CategoryArchiveLink$>"<MTIfNonEmpty tag="MTCategoryDescription"> title="View all posts filed under <$mt:CategoryLabel$>"</MTIfNonEmpty>>
+          <$mt:CategoryLabel$>
+        </a>
+<mt:Else>
+        <$MTCategoryLabel$>
+</mt:IfNonZero>
+<mt:SubCatsRecurse>
+      </li>
+<mt:SubCatIsLast><mt:HasParentCategory>      </ul></mt:HasParentCategory></mt:SubCatIsLast>
+</mt:TopLevelCategories>
+    </ul>
+  </div>
+  <div id="feed">
+    <ul>
+      <li class="feed-url"><a href="<$mt:Link template="feed_recent"$>" title="Subscribe to the feed">Subscribe</a></li>
+    </ul>
+  </div>
+</div><!-- //end cat-navigation -->

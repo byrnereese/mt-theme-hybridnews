@@ -5,43 +5,59 @@ key: "HybridNews"
 
 blog_config_template: '<mt:PluginConfigForm id="HybridNews">'
 settings:
-  blog_logo_url:
+  banner_ad_top:
     scope: blog
-  exclude_blog:
+  use_slideshow:
     scope: blog
-  use_threaded:
+    default: 1
+  slide_count:
     scope: blog
-  anon_name:
+    default: 3
+  excerpt_count:
     scope: blog
-    default: "Joe Pothole"
+    default: 3
 plugin_config:
   HybridNews:
-    fieldset1:
-      blog_logo_url:
-        type: text
-        label: 'Blog Logo URL'
-        hint: 'This setting is for the blog logo URL. All URLs must reference an image 276 pixels wide and 72 pixels high. No relative URLs permitted.'
-        tag: 'BlogLogoURL'
-      exclude_blog:
+    ads_fieldset1:
+      banner_ad_top:
+        type: textarea
+        label: 'Ad (Banner)'
+        hint: 'The advertisement located in the header of the site.'
+        tag: 'HybridBannerAdTop'
+    homepage_set:
+      use_slideshow:
         type: checkbox
-        label: 'Exclude from Blog Listing'
-        hint: 'Do not display this blog among on the "Our Blogs" page.'
-        tag: 'ExcludeBlogFromListing?'
-      use_threaded:
-        type: checkbox
-        label: 'Use Threaded Comments'
-        hint: "Display this blog's comments using nested threaded comments. EXPERIMENTAL."
-        tag: 'UseThreadedComments?'
-      anon_name:
+        label: 'Enable Slideshow?'
+        hint: 'Turn on the slideshow widget to feature posts on the front door. Posts given a tag of @slideshow will be featured here.'
+        tag: 'IfSlideshowEnabled?'
+      slide_count:
         type: text
-        label: 'Anonymous User Name'
-        hint: "The name that will be given to anonymous user's who do not provide a name."
-        tag: 'AnonymousUserDisplayName'
+        label: 'Slide Count'
+        hint: 'The number of posts to feature in the slideshow.'
+        tag: 'SlideshowCount'
+      excerpt_count:
+        type: text
+        label: 'Excerpt Count'
+        hint: 'The number of posts to excerpt (typically below the slideshow if it is enabled).'
+        tag: 'ExcerptCount'
 
 template_sets:
   hybrid_news:
     base_path: templates/
     label: 'Hybrid News'
+    fields:
+      featured_image_asset:
+        name: "Featured Image"
+        description: "Specifies an image to appear in conjunction with a link to this post when it is featured on the site. This field is required if you want to feature the post."
+        type: asset.image
+        obj_type: entry
+        tag: EntryFeaturedImage
+      html_title_tag:
+        name: "HTML Title Tag"
+        description: "An optional title for your blog post that will only appear in the HTML title tag (this helps improve SEO)."
+        type: text
+        obj_type: entry
+        tag: EntryHTMLTitle
     templates:
       widgetset:      
         homepage:     
@@ -50,12 +66,20 @@ template_sets:
 #             - 'Search Box'
       index:
         sitemap:
-          label: 'Sitemap'
-          outfile: 'sitemap.xml'
+          label: 'Sitemap (Google Web)'
+          outfile: 'sitemap-web.xml'
+          rebuild_me: 0 
+        sitemap_news:
+          label: 'Sitemap (Google News)'
+          outfile: 'sitemap-news.xml'
           rebuild_me: 0 
         feed_recent:
           label: 'Feed - Recent Entries'
           outfile: atom.xml
+          rebuild_me: 1
+        feed_comments:
+          label: 'Feed - Recent Comments'
+          outfile: comments.xml
           rebuild_me: 1
         main_index:
           label: 'Main Index'
@@ -106,6 +130,8 @@ template_sets:
               file_template: %-c/%-f
               preferred: 1
       module:
+        slideshow:
+          label: 'Homepage Slideshow'
         banner_footer:
           label: 'Banner Footer'
         banner_header:

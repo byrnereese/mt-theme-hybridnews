@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" >
+<MTEntries days="3" blog_ids="all">
+  <url>
+    <loc><$MTEntryPermalink encode_xml="1"$></loc>
+    <lastmod><MTIfNonZero tag="MTEntryCommentCount"><MTComments lastn="1"><$MTCommentDate utc="1" format="%Y-%m-%dT%H:%M:%S-06:00"$></MTComments><MTElse><$MTEntryModifiedDate utc="1" format="%Y-%m-%dT%H:%M:%S-06:00"$></MTElse></MTIfNonZero></lastmod>
+    <news:news>
+      <news:publication_date><$MTEntryModifiedDate utc="1" format="%Y-%m-%dT%H:%M:%S-06:00"$></news:publication_date>
+      <news:title><$MTEntryTitle encode_xml="1"$></news:title>
+      <MTEntryIfTagged><news:keywords><MTEntryTags glue=', '><$MTTagName$></MTEntryTags></news:keywords></MTEntryIfTagged>
+    </news:news>
+  </url>
+</MTEntries>
+</urlset> 
