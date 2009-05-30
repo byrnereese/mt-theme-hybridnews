@@ -6,6 +6,7 @@
 <mt:else>
     <title><$MTEntryTitle encode_html="1"$> - <$MTBlogName encode_html="1"$></title>
 </mt:if>
+    <link rel="canonical" href="<$mt:EntryPermalink$>" />
     <$mt:include module="HTML Head"$>
     <MTEntryPrevious><link rel="prev" href="<$MTEntryPermalink$>" title="<$MTEntryTitle encode_html="1"$>" rel="bookmark" /></MTEntryPrevious>
     <MTEntryNext><link rel="next" href="<$MTEntryPermalink$>" title="<$MTEntryTitle encode_html="1"$>" rel="bookmark" /></MTEntryNext>
