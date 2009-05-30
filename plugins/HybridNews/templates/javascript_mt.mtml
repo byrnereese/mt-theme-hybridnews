@@ -10,12 +10,12 @@ mt = {
         timeout: <$mt:UserSessionCookieTimeout$>
     },
     links: {
-        signUp: '<$mt:CGIPath$><$mt:CommunityScript$>?__mode=register&blog_id=<$mt:CNRootBlogID$>',
+        signUp: '<$mt:CGIPath$><$mt:CommunityScript$>?__mode=register&blog_id=<$mt:BlogID$>',
         signIn: '<$mt:SignInLink$>',
         signOut: '<$mt:SignOutLink$>'
     },
     blog: {
-        id: <$mt:CNRootBlogID _default="0"$>,
+        id: <$mt:BlogID _default="0"$>,
         url: '<$mt:BlogURL encode_url="1"$>',
         staticWebPath: '<$mt:StaticWebPath$>',
         adminScript: '<$mt:AdminScript$>',
