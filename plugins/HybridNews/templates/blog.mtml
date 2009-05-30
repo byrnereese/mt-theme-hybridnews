@@ -1,3 +1,4 @@
+<mt:var name="blog_index" value="1">
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en-US">
 <head profile="http://gmpg.org/xfn/11">
@@ -29,6 +30,8 @@
               <MTEntryIfTagged><span class="tags"> <MTIfNonEmpty tag="EntryCategory"><span class="separator">|</span></MTIfNonEmpty> <span class="text">Tagged</span> <MTEntryTags glue=', '><a href="<$mt:CGIPath$><$mt:SearchScript$>?IncludeBlogs=<$mt:BlogID$>&amp;tag=<$mt:TagName regex_replace="/\s/g","+" url_encode="1"$>&amp;limit=20" rel="tag"><$MTTagName$></a></MTEntryTags></span></MTEntryIfTagged>
             </p>
         </div><!-- //end post -->
+<mt:else>
+<p>You have not yet created any blog posts. To target posts to this page, add the @blog tag to the post.</p>
 </mt:Entries>
 
       </div><!-- //end .content -->

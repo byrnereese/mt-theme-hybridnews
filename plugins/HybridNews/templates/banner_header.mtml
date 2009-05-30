@@ -8,6 +8,7 @@
       <li<mt:if name="main_index"> class="current_page_item"</mt:if>><a href="<$mt:BlogURL$>">Home</a></li>
       <li class="<mt:if tag="PageID" eq="$thispage">current_page_item </mt:if>page_item page-item-<$mt:PageID$>"><a href="<$mt:PagePermalink$>" title="<$mt:PageTitle encode_html="1"$>"><$mt:PageTitle encode_html="1"$></a></li>
 <mt:if name="__last__">
+      <li<mt:if name="blog_index"> class="current_page_item"</mt:if>><a href="<$mt:BlogURL$>blog/">Blog</a></li>
     </ul>
 </mt:if>
 </mt:Pages>
