@@ -15,7 +15,9 @@
   <div id="search-" class="search">
     <form method="get" class="search-form" id="search-form-" action="<$mt:AdminCGIPath$><$mt:SearchScript$>">
       <div>
-        <input class="search-text" type="text" name="s" id="search-text-" tabindex="7" value="Search this site..." onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" />
+        <input type="hidden" name="IncludeBlogs" value="<$mt:BlogID$>" />
+        <input type="hidden" name="limit" value="20" />
+        <input class="search-text" type="text" name="search" id="search-text-" tabindex="7" value="Search this site..." onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" />
         <input class="search-submit button" name="submit" type="submit" id="search-submit-" tabindex="8" value="Search" />
       </div>
     </form>
