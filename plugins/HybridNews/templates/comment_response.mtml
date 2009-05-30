@@ -1,22 +1,42 @@
-<mt:Ignore>figure out which comment is the newly submitted comment</mt:Ignore>
-<mt:Include module="CN: Global Variables">
-<mt:SetVarBlock name="comment_new"><mt:CommentID></mt:SetVarBlock>
-
-<mt:Ignore>Return the complete list of comments.</mt:Ignore>
-<MTComments>
-    <MTCommentsHeader>
-      <h3 class="section-title"><$MTEntryCommentCount singular="1 Comment" plural="# Comments" none="No Comments"$></h3>
-    </MTCommentsHeader>
-    <mt:Include module="CN: Individual Comment">
-</MTComments>
-
-<mt:Ignore>Output messaging if necessary.</mt:Ignore>
-<mt:If name="comment_pending">
-    <mt:Ignore><!-- Pending message when comment is being held for review --></mt:Ignore>
+<mt:If name="comment_confirmation">
+    <$mt:Var name="short" value="Success!"$>
+    <$mt:Var name="page_title" value="Confirmation..."$>
+    <$mt:Var name="message" value="<p>Your comment has been submitted!</p>"$>
+<mt:Else name="comment_pending">
+    <$mt:Var name="short" value="Thank you!"$>
+    <$mt:Var name="page_title" value="Thank you for commenting."$>
     <$mt:Var name="message" value="<p>Your comment has been received and held for approval by the blog owner.</p>"$>
 <mt:Else name="comment_error">
-    <mt:Ignore><!-- Error message when comment submission fails --></mt:Ignore>
+    <$mt:Var name="short" value="Error"$>
+    <$mt:Var name="page_title" value="Comment Submission Error"$>
     <mt:SetVarBlock name="message"><p>Your comment submission failed for the following reasons: <$mt:ErrorMessage$></p></mt:SetVarBlock>
 </mt:If>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
+    <title><$mt:var name="page_title"$> - <$MTBlogName encode_html="1"$></title>
+    <$mt:include module="HTML Head"$>
+</head>
+<body class="ltr logged-in single single-36 primary-active secondary-inactive subsidiary-inactive">
 
-<mt:If name="message"><div id="comment-error" class="message"><mt:Var name="message" /></div></mt:If> 
+  <div id="body-container">
+    <$mt:include module="Banner Header"$>
+    <div id="container">
+      <div id="content"> <!-- Deprecated. Use the .content or .hfeed class for styling instead of #content. -->
+      <div class="hfeed content">
+        <div class="breadcrumb breadcrumbs"><div class="breadcrumb-trail"><span class="breadcrumb-title">Browse:</span> <a href="<$mt:BlogURL$>" title="<$mt:BlogName encode_html="1"$>" class="trail-begin">Home</a> / <MTCommentEntry><a href="<$MTEntryPermalink$>" rel="bookmark"><$MTEntryTitle$></a></MTCommentEntry> / <span class="trail-end"><$mt:var name="short"$></span></div></div>
+
+        <mt:If name="message"><div id="comment-error" class="message"><mt:Var name="message" /></div></mt:If> 
+
+      </div><!-- //end .content -->
+      </div><!-- //end #content -->
+      <div id="widget-container">
+        <div id="primary" class="aside">
+          <mt:widgetset name="Simple Sidebar">
+        </div>
+      </div>
+      <$mt:include module="Banner Footer"$>
+    </div>
+  </div>
+</body>
+</html>

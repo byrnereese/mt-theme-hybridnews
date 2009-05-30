@@ -18,7 +18,7 @@ settings:
     default: 3
   copyright:
     scope: blog
-    default: '<span class="text">Copyright &#169; 2009</span><a href="http://themehybrid.com/demo/hybrid-news" title="Hybrid News" rel="bookmark"><span>Hybrid News</span></a>, <a href="http://www.majordojo.com/" title="Byrne Reese" rel="bookmark">Byrne Reese</a>.'
+    default: '<span class="text">Copyright &#169; 2009</span> <a href="http://themehybrid.com/demo/hybrid-news" title="Hybrid News" rel="bookmark"><span>Hybrid News</span></a>, <a href="http://www.majordojo.com/" title="Byrne Reese" rel="bookmark">Byrne Reese</a>.'
   link_back:
     scope: blog
     default: 1
@@ -148,7 +148,7 @@ template_sets:
           label: Search (secondary)
           widgets:
         generic:
-          label: Generic Sidebar
+          label: Simple Sidebar
           widgets:
              - 'Accordian'
              - 'Text Widget'

@@ -18,11 +18,44 @@
           <div class="paged-navigation"></div>
 
 <MTIfCommentsAccepted>
+<script type="text/javascript">
+$j(document).ready( function() {
+    $j('.log-in-out').greet({
+      loggedInMessage: 'Welcome back, %u! (%o)',
+      <mt:IfRegistrationRequired>loggedOutMessage: '%i to leave a comment.',<mt:else>loggedOutMessage: '%i to have your comment published immediately.',</mt:IfRegistrationRequired>
+      loginText: 'Sign in',
+      logoutText: 'Sign out',
+      mode: 'mtpro',
+      editProfileText: 'edit profile',
+      returnToURL: '<mt:EntryPermalink>#comments'
+    });
+<mt:IfRegistrationRequired>
+    $j('#commentform').onauthchange( function(e, u) {
+      if (u.is_authenticated) $j(this).show();
+      else $j(this).hide();
+    });
+</mt:IfRegistrationRequired>
+    $j('#commentform').onauthchange( function(e, u) {
+      if (u.is_authenticated) {
+        $j('#comments-open-data').hide();
+        $j('#sid').val(u.sid);
+      } else {
+        $j('#comments-open-data').show();
+      }
+    });
+    $j('#submit').click( function() {
+        if ($j('#armor').val()) $j('#armor').val('<$mt:BlogSitePath encode_sha1="1"$>');
+        $j('#submit').attr('disabled',1);
+        $j('#reset').attr('disabled',1);
+    });
+});
+</script>
+
           <div id="respond">
             <h3 id="reply">Leave a Reply</h3>
             <p id="cancel-comment-reply"><a rel="nofollow" id="cancel-comment-reply-link" href="/~breese/wordpress/2009/05/26/kristen-and-jensen-omg-cute/#respond" style="display:none;">Click here to cancel reply.</a></p>
             <form method="post" action="<$MTCGIPath$><$MTCommentScript$>" id="commentform">
-              <p class="log-in-out">Logged in as <a href="http://localhost/~breese/wordpress/wp-admin/profile.php" title="admin">admin</a>. <a href="http://localhost/~breese/wordpress/wp-login.php?action=logout&#038;redirect_to=http%3A%2F%2Flocalhost%2F%7Ebreese%2Fwordpress%2F2009%2F05%2F26%2Fkristen-and-jensen-omg-cute%2F&#038;_wpnonce=b691583da5" title="Log out of this account">Log out &raquo;</a></p>
+              <p class="log-in-out"></p>
               <p class="form-textarea">
                 <label for="comment">Comment</label>
                 <div id="comments-open-data">
@@ -51,19 +84,18 @@
                 <MTIfAllowCommentHTML><span class="help">Some HTML is permitted: <span>a</span>, <span>strong</span>, <span>em</span></span></MTIfAllowCommentHTML>
               </p>
               <p class="form-submit">
-                <input class="submit-comment button" name="submit" type="submit" id="submit" tabindex="5" value="Submit" />
+                <input class="submit-comment button" type="submit" accesskey="s" name="submit" 
+                     id="submit" value="Submit" tabindex="5" />
                 <input class="reset-comment button" name="reset" type="reset" id="reset" tabindex="6" value="Reset" />
-                <input type="hidden" id="comment-static" name="static" value="1" />
-                <input type="hidden" id="comment-entry_id" name="entry_id" value="<$MTEntryID$>" />
-                <input type="hidden" id="comment-lang" name="__lang" value="<$MTBlogLanguage$>" />
-                <input type="hidden" id="comment-parent_id" name="parent_id" value="<$MTCommentParentID$>" id="comment-parent-id" />
-                <input type="hidden" id="comment-armor" name="armor" value="1" />
-                <input type="hidden" id="comment-previewx" name="preview" value="" />
-                <input type="hidden" id="comment-sid" name="sid" value="" />
+
+                <input type="hidden" name="static" value="1" />
+                <input type="hidden" name="entry_id" value="<$mt:EntryID$>" />
+                <input type="hidden" name="__lang" value="<$mt:BlogLanguage$>" />
+                <input type="hidden" name="parent_id" value="<$mt:CommentParentID escape="html"$>" id="comment-parent-id" />
+                <input type="hidden" name="armor" value="1" id="armor" />
+                <input type="hidden" name="preview" value="" />
+                <input type="hidden" name="sid" value="" id="sid" />
               </p>
-              <div class="comment-action">
-                <input type="hidden" id="_wp_unfiltered_html_comment" name="_wp_unfiltered_html_comment" value="92f6ba8d4d" />
-              </div>
             </form>
           </div>
 </MTIfCommentsAccepted>
