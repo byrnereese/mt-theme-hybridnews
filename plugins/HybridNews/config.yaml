@@ -118,6 +118,11 @@ template_sets:
              - 'Category List'
              - 'Blog Roll'
              - 'Text Widget 2'
+        blog:
+          label: Blog Sidebar
+          widgets:
+             - 'Accordian'
+             - 'Text Widget'
         archive_p:     
           label: Archive (primary)
           widgets: 
@@ -152,6 +157,10 @@ template_sets:
           label: 'Sitemap (Web)'
           outfile: 'sitemap.xml'
           rebuild_me: 0 
+        blog:
+          label: 'Main Index (Blog)'
+          outfile: 'blog/index.html'
+          rebuild_me: 1 
         sitemap_news:
           label: 'Sitemap (News)'
           outfile: 'news.xml'
@@ -165,7 +174,7 @@ template_sets:
           outfile: comments.xml
           rebuild_me: 1
         main_index:
-          label: 'Main Index'
+          label: 'Main Index (Frontdoor)'
           outfile: index.html
           rebuild_me: 1
         javascript:
