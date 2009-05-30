@@ -26,7 +26,11 @@
             <h1 class="single-title entry-title"><a href="<$mt:EntryPermalink$>" title="<$mt:EntryTitle encode_html="1"$>" rel="bookmark"><$mt:EntryTitle encode_html="1"$></a></h1>
             <p class="byline"><span class="text">By</span> <span class="author vcard"><a class="url fn n" href="<$mt:EntryAuthorURL$>" title="<$mt:EntryAuthorDisplayName encode_html="1"$>"><$mt:EntryAuthorDisplayName$></a></span> <span class="text">on</span> <abbr class="published" title="<$MTEntryDate format_name="iso8601"$>"><$MTEntryDate format="%m %d, %y"$></abbr></p>
             <div class="entry-content entry">
+<mt:DropCapsEnabled>
+              <mt:section regex_replace="/<p>([A-Z])/g","<p><span class='drop-cap'>$1</span>"><$mt:EntryBody$></mt:section>
+<mt:else>
               <$mt:EntryBody$>
+</mt:DropCapsEnabled>
               <$mt:EntryMore$>
       	    </div>
             <p class="entry-meta post-meta-data">

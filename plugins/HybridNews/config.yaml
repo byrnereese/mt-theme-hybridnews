@@ -16,6 +16,9 @@ settings:
   excerpt_count:
     scope: blog
     default: 3
+  dropcaps:
+    scope: blog
+    default: 0
   copyright:
     scope: blog
     default: '<span class="text">Copyright &#169; 2009</span> <a href="http://themehybrid.com/demo/hybrid-news" title="Hybrid News" rel="bookmark"><span>Hybrid News</span></a>, <a href="http://www.majordojo.com/" title="Byrne Reese" rel="bookmark">Byrne Reese</a>.'
@@ -30,6 +33,11 @@ plugin_config:
         label: 'Link Love?'
         hint: 'Link back to Hybrid News and Majordojo as a way to say thank you. (Optional)'
         tag: 'ShowHybridLinkLove?'
+      dropcaps:
+        type: checkbox
+        label: 'Use Drop Caps?'
+        hint: 'Enable drop caps for your blog posts?'
+        tag: 'DropCapsEnabled?'
       copyright:
         type: text
         label: 'Copyright'
