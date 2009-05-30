@@ -18,9 +18,10 @@
     <div id="container">
       <div id="content"> <!-- Deprecated. Use the .content or .hfeed class for styling instead of #content. -->
       <div class="hfeed content">
-          <div class="breadcrumb breadcrumbs"><div class="breadcrumb-trail"><span class="breadcrumb-title">Browse:</span> <a href="<$mt:BlogURL$>" title="<$mt:BlogName encode_html="1"$>" class="trail-begin">Home</a> <MTIfNonEmpty tag="EntryCategory"> / </mt:IfNonEmpty><MTEntryCategories glue=', '><a href="<$MTCategoryArchiveLink$>" rel="category"><$MTCategoryLabel$></a></MTEntryCategories> / <span class="trail-end"><$mt:EntryTitle$></span></div></div>
+        <div class="breadcrumb breadcrumbs"><div class="breadcrumb-trail"><span class="breadcrumb-title">Browse:</span> <a href="<$mt:BlogURL$>" title="<$mt:BlogName encode_html="1"$>" class="trail-begin">Home</a> <MTIfNonEmpty tag="EntryCategory"> / </mt:IfNonEmpty><MTEntryCategories glue=', '><a href="<$MTCategoryArchiveLink$>" rel="category"><$MTCategoryLabel$></a></MTEntryCategories> / <span class="trail-end"><$mt:EntryTitle$></span></div></div>
 
-          <div id="post-<$mt:EntryID$>" class="hentry post <MTIfNonEmpty tag="EntryCategory">category-<$mt:CategoryBasename$></MTIfNonEmpty> <MTEntryIfTagged><MTEntryTags glue=' '>tag-<$MTTagName regex_replace="/ /g","-"$></MTEntryTags></MTEntryIfTagged>">
+        <!-- google_ad_section_start -->
+        <div id="post-<$mt:EntryID$>" class="hentry post <MTIfNonEmpty tag="EntryCategory">category-<$mt:CategoryBasename$></MTIfNonEmpty> <MTEntryIfTagged><MTEntryTags glue=' '>tag-<$MTTagName regex_replace="/ /g","-"$></MTEntryTags></MTEntryIfTagged>">
             <h1 class="single-title entry-title"><a href="<$mt:EntryPermalink$>" title="<$mt:EntryTitle encode_html="1"$>" rel="bookmark"><$mt:EntryTitle encode_html="1"$></a></h1>
             <p class="byline"><span class="text">By</span> <span class="author vcard"><a class="url fn n" href="<$mt:EntryAuthorURL$>" title="<$mt:EntryAuthorDisplayName encode_html="1"$>"><$mt:EntryAuthorDisplayName$></a></span> <span class="text">on</span> <abbr class="published" title="<$MTEntryDate format_name="iso8601"$>"><$MTEntryDate format="%m %d, %y"$></abbr></p>
             <div class="entry-content entry">
@@ -32,6 +33,7 @@
               <MTEntryIfTagged><span class="tags"> <MTIfNonEmpty tag="EntryCategory"><span class="separator">|</span></MTIfNonEmpty> <span class="text">Tagged</span> <MTEntryTags glue=', '><a href="<$mt:CGIPath$><$mt:SearchScript$>?IncludeBlogs=<$mt:BlogID$>&amp;tag=<$mt:TagName regex_replace="/\s/g","+" url_encode="1"$>&amp;limit=20" rel="tag"><$MTTagName$></a></MTEntryTags></span></MTEntryIfTagged>
             </p>
         </div><!-- //end post -->
+        <!-- google_ad_section_end -->
         <div class="author-profile vcard">
           <$mt:include module="Userpic" userpic_size="96" userpic_type="author"$>
           <h4 class="author-name fn n"><a href="<$mt:AuthorURL$>"><$mt:AuthorDisplayName$></a></h4>
