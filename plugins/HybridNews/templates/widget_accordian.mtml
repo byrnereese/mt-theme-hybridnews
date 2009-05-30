@@ -9,17 +9,21 @@
         <div class="tab-content t1">
           <p>
 <mt:Tags top="20">
-            <a href="javascript:void(0)" onclick="location.href="<$mt:TagSearchLink encode_js="1"$>";return false;" class="tag-link tag-rank-<$mt:TagRank max="10"$>"><$mt:TagName$></a>
+            <a href="javascript:void(0)" onclick="location.href='<$mt:TagSearchLink encode_js="1"$>';return false;" class="tag-link tag-rank-<$mt:TagRank max="10"$>"><$mt:TagName$></a>
 </mt:Tags>
           </p>
         </div>
 
         <div class="tab-content t2">
-          <ul class="random">
 <mt:Entries lastn="4" unique="1">
+<mt:if name="__first__">
+          <ul class="random">
+</mt:if>
             <li><a href="<$mt:EntryPermalink$>" title="<$mt:EntryTitle encode_html="1"$>" rel="bookmark"><$mt:EntryTitle$></a></li>
-</mt:Entries>
+<mt:if name="__last__">
           </ul>
+</mt:if>
+</mt:Entries>
         </div>
 
         <div class="tab-content t3">

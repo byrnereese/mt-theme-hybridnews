@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en-US">
 <head profile="http://gmpg.org/xfn/11">
     <title><$mt:BlogName$><mt:if tag="BlogDescription" ne=""> | <$mt:BlogDescription encode_html="1"$></mt:if></title>
@@ -33,7 +34,6 @@
         <div id="headlines">
 <mt:var name="count" value="0">
 <mt:TopLevelCategories>
-<mt:unless tag="CategoryExcludeFromHomepage">
 <mt:setvar name="count" op="add" value="1">
 <mt:setvarblock name="odd"><mt:var name="count" op="mod" value="2"></mt:setvarblock>
 
@@ -50,7 +50,6 @@
 </mt:if>
 </mt:Entries>
           </div>
-</mt:unless>
 </mt:TopLevelCategories>
         </div><!-- //end headlines -->
 

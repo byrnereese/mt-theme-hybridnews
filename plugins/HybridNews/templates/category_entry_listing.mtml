@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en-US">
 <head profile="http://gmpg.org/xfn/11">
     <title><$MTBlogName encode_html="1"$>: <$MTArchiveTitle$> Archives</title>
@@ -14,12 +15,12 @@
       <div id="content"> <!-- Deprecated. Use the .content or .hfeed class for styling instead of #content. -->
       <div class="hfeed content">
 
-        <div class="breadcrumb breadcrumbs"><div class="breadcrumb-trail"><span class="breadcrumb-title">Browse:</span> <a href="<$mt:BlogURL$>" title="<$mt:BlogName encode_html="1"$>" class="trail-begin">Home</a> / <span class="trail-end"><$mt:ArchiveTitle$></span></div></div>
+        <div class="breadcrumb breadcrumbs"><div class="breadcrumb-trail"><span class="breadcrumb-title">Browse:</span> <a href="<$mt:BlogURL$>" title="<$mt:BlogName encode_html="1"$>" class="trail-begin">Home</a> / <mt:HasParentCategory><mt:ParentCategories exclude_current="1"><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel$></a></mt:ParentCategories> / </mt:HasParentCategory> <span class="trail-end"><$mt:ArchiveTitle$></span></div></div>
 
         <div class="category-info">
           <h1 class="category-title"><$mt:ArchiveTitle$></h1>
           <div class="category-description">
-            Category Description Goes Here.<br />
+            <p><$mt:CategoryDescription$></p>
           </div>
         </div>
 

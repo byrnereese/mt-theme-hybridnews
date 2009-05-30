@@ -1,4 +1,4 @@
-          <div class="hentry post post-<$mt:EntryID$> <mt:if name="__even__">even<mt:else>odd</mt:if> <MTIfNonEmpty tag="EntryCategory"><mt:EntryCategory>category-<$mt:CategoryBasename$></mt:EntryCategory></MTIfNonEmpty> <MTEntryIfTagged><MTEntryTags glue=' '>tag-<$MTTagName regex_replace="/ /g","-"$></MTEntryTags></MTEntryIfTagged>">
+          <div class="hentry post post-<$mt:EntryID$> <mt:if name="__even__">even<mt:else>odd</mt:if> <mt:IfNonEmpty tag="EntryCategory">category-<$mt:CategoryBasename$></mt:IfNonEmpty> <MTEntryIfTagged><MTEntryTags glue=' '>tag-<$MTTagName regex_replace="/ /g","-"$></MTEntryTags></MTEntryIfTagged>">
 <mt:if tag="EntryFeaturedImage">
   <mt:setvarblock name="aid"><mt:EntryFeaturedImage></mt:setvarblock>
   <mt:setvarblock name="thumbnail"><mt:IfNonEmpty tag="EntryFeaturedImage"><mt:EntryFeaturedImageAsset id="$aid"><img src="<mt:AssetThumbnailURL width="150" square="1"$>" alt="<$mt:AssetLabel encode_html="1"$>" class="thumbnail" /></mt:EntryFeaturedImageAsset></mt:IfNonEmpty></mt:setvarblock>
@@ -7,13 +7,13 @@
 </mt:if>
 <mt:if name="thumbnail"><div class="featured-image"><a href="<$mt:EntryPermalink$>"><$mt:var name="thumbnail"$></a></div></mt:if>
             <h2 class="post-title entry-title"><a href="<$mt:EntryPermalink$>" title="<$mt:EntryTitle encode_html="1"$>" rel="bookmark"><$mt:EntryTitle encode_html="1"$></a></h2>
-            <p class="byline"><span class="text">By</span> <span class="author vcard"><a class="url fn n" href="<$mt:EntryAuthorURL$>" title="<$mt:EntryAuthorDisplayName$>"><$mt:EntryAuthorDisplayName$></a></span> <span class="text">on</span> <abbr class="published" title="<$MTEntryDate format_name="iso8601"$>"><$MTEntryDate format="%m %d, %y"$></abbr></p>
+            <p class="byline"><span class="text">By</span> <span class="author vcard"><a class="url fn n" href="<$mt:EntryAuthorURL$>" title="<$mt:EntryAuthorDisplayName encode_html="1"$>"><$mt:EntryAuthorDisplayName$></a></span> <span class="text">on</span> <abbr class="published" title="<$MTEntryDate format_name="iso8601"$>"><$MTEntryDate format="%m %d, %y"$></abbr></p>
             <div class="entry-summary entry">
               <p><$mt:EntryExcerpt words="22"$></p>
             </div>
             <p class="entry-meta post-meta-data">
               <MTIfNonEmpty tag="EntryCategory"><span class="categories"><span class="text">Posted in</span> <MTEntryCategories glue=', '><a href="<$MTCategoryArchiveLink$>" rel="category"><$MTCategoryLabel$></a></MTEntryCategories></span></MTIfNonEmpty>
-              <MTEntryIfTagged><span class="tags"> <MTIfNonEmpty tag="EntryCategory"><span class="separator">|</span></MTIfNonEmpty> <span class="text">Tagged</span> <MTEntryTags glue=', '><a href="<$mt:CGIPath$><$mt:SearchScript$>?IncludeBlogs=<$mt:BlogID$>&tag=<$mt:TagName regex_replace="/\s/g","+" url_encode="1"$>&limit=20" rel="tag"><$MTTagName$></a></MTEntryTags></span></MTEntryIfTagged>
+              <MTEntryIfTagged><span class="tags"> <MTIfNonEmpty tag="EntryCategory"><span class="separator">|</span></MTIfNonEmpty> <span class="text">Tagged</span> <MTEntryTags glue=', '><a href="<$mt:CGIPath$><$mt:SearchScript$>?IncludeBlogs=<$mt:BlogID$>&amp;tag=<$mt:TagName regex_replace="/\s/g","+" url_encode="1"$>&amp;limit=20" rel="tag"><$MTTagName$></a></MTEntryTags></span></MTEntryIfTagged>
               <MTIfCommentsActive><span class="separator">|</span> <a href="<$MTEntryPermalink$>#comments" class="comments-link" title="Comments on <$mt:EntryTitle encode_html="1"$>"><$MTEntryCommentCount singular="1 Response" plural="# Responses" none="No Responses"$></a></MTIfCommentsActive>
             </p>
           </div>

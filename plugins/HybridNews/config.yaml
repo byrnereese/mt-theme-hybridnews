@@ -162,6 +162,13 @@ template_sets:
             category:
               archive_type: Category
               preferred: 1
+        category_entry_feed:
+          label: 'Category Entry Feed'
+          mappings:
+            category:
+              archive_type: Category
+              file_template: '%-c/index.xml'
+              preferred: 0
         monthly_entry_listing:
           label: 'Monthly Entry Listing'
           mappings:
