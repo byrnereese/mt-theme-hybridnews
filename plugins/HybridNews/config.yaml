@@ -16,8 +16,25 @@ settings:
   excerpt_count:
     scope: blog
     default: 3
+  copyright:
+    scope: blog
+    default: '<span class="text">Copyright &#169; 2009</span><a href="http://themehybrid.com/demo/hybrid-news" title="Hybrid News" rel="bookmark"><span>Hybrid News</span></a>, <a href="http://www.majordojo.com/" title="Byrne Reese" rel="bookmark">Byrne Reese</a>.'
+  link_back:
+    scope: blog
+    default: 1
 plugin_config:
   HybridNews:
+    misc_fieldset:
+      link_back:
+        type: checkbox
+        label: 'Link Love?'
+        hint: 'Link back to Hybrid News and Majordojo as a way to say thank you. (Optional)'
+        tag: 'ShowHybridLinkLove?'
+      copyright:
+        type: text
+        label: 'Copyright'
+        hint: 'The copyright statement that appears at the bottom of the page.'
+        tag: 'HybridCopyright'
     ads_fieldset1:
       banner_ad_top:
         type: textarea
@@ -82,13 +99,25 @@ template_sets:
       widget:
         widget_monthly_archive:
           label: 'Monthly Archive List'
+        widget_cats:
+          label: 'Category List'
         widget_links:
           label: 'Links'
+        widget_blogroll:
+          label: 'Blog Roll'
         widget_text:
-          label: 'Text'
+          label: 'Text Widget'
+        widget_text2:
+          label: 'Text Widget 2'
         widget_accordian:
           label: 'Accordian'
-      widgetset:      
+      widgetset:
+        footer:
+          label: Footer
+          widgets:
+             - 'Category List'
+             - 'Blog Roll'
+             - 'Text Widget 2'
         archive_p:     
           label: Archive (primary)
           widgets: 
@@ -99,7 +128,7 @@ template_sets:
           label: Homepage (primary)
           widgets: 
              - 'Accordian'
-             - 'Text'
+             - 'Text Widget'
         homepage_s:
           label: Homepage (secondary)
           widgets:
@@ -109,7 +138,7 @@ template_sets:
           label: Search (primary)
           widgets: 
              - 'Accordian'
-             - 'Text'
+             - 'Text Widget'
         search_s:
           label: Search (secondary)
           widgets:
@@ -117,7 +146,7 @@ template_sets:
           label: Generic Sidebar
           widgets:
              - 'Accordian'
-             - 'Text'
+             - 'Text Widget'
       index:
         sitemap:
           label: 'Sitemap (Web)'

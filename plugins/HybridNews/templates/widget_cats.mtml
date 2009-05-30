@@ -1,0 +1,20 @@
+    <div id="hybrid-categories-344730103" class="widget categories widget-categories">
+      <div class="widget-inside">
+        <h3 class="widget-title">Topics</h3>
+    <mt:TopLevelCategories>
+        <mt:SubCatIsFirst>
+        <ul class="xoxo categories">
+        </mt:SubCatIsFirst>
+        <mt:If tag="CategoryCount">
+          <li class="cat-item cat-item-<$mt:CategoryID$>"><a href="<$mt:CategoryArchiveLink$>" title="View all posts filed under <$mt:CategoryLabel encode_html="1"$>"><$mt:CategoryLabel$></a> (<a href="<$mt:CategoryArchiveLink$>index.xml" title="Atom">RSS</a>)
+        <mt:Else>
+            <li><$mt:CategoryLabel$>
+        </mt:If>
+        <$mt:SubCatsRecurse$>
+            </li>
+        <mt:SubCatIsLast>
+        </ul>
+        </mt:SubCatIsLast>
+    </mt:TopLevelCategories>
+      </div>
+    </div><!-- //end hybrid categories -->
