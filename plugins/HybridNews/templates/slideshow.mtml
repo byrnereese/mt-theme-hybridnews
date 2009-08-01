@@ -3,12 +3,12 @@
 <mt:setvarblock name="slidecount"><$mt:SlideshowCount$></mt:setvarblock>
 <mt:Entries tags="@slideshow" lastn="$slidecount">
             <div class="hentry post post-<$mt:EntryID$> <mt:if name="__even__">even<mt:else>odd</mt:if> alt sticky <MTIfNonEmpty tag="EntryCategory">category-<$mt:CategoryBasename$></mt:IfNonEmpty> <MTEntryIfTagged><MTEntryTags glue=' '>tag-<$MTTagName regex_replace="/ /g","-"$></MTEntryTags></MTEntryIfTagged> feature">
-<mt:if tag="EntryFeaturedImage">
+<mt:ifnonempty tag="EntryFeaturedImage">
   <mt:setvarblock name="aid"><mt:EntryFeaturedImage></mt:setvarblock>
-  <mt:setvarblock name="thumbnail"><mt:IfNonEmpty tag="EntryFeaturedImage"><mt:EntryFeaturedImageAsset id="$aid"><img src="<mt:AssetThumbnailURL width="230"$>" alt="<$mt:AssetLabel encode_html="1"$>" class="medium feature-image medium" /></mt:EntryFeaturedImageAsset></mt:IfNonEmpty></mt:setvarblock>
+  <mt:setvarblock name="thumbnail"><mt:EntryFeaturedImageAsset id="$aid"><img src="<mt:CroppedAsset label="Homepage Feature"><$mt:AssetURL$><mt:else><$mt:AssetThumbnailURL height="230"$></mt:CroppedAsset>" alt="<$mt:AssetLabel encode_html="1"$>" /></mt:EntryFeaturedImageAsset></mt:setvarblock>
 <mt:else>
-  <mt:setvarblock name="thumbnail"><mt:EntryAssets lastn="1"><img src="<mt:AssetThumbnailURL width="230"$>" alt="<$mt:AssetLabel encode_html="1"$>" class="medium feature-image medium" /></mt:EntryAssets></mt:setvarblock>
-</mt:if>
+  <mt:setvarblock name="thumbnail"><mt:EntryAssets lastn="1"><mt:CroppedAsset label="Homepage Feature"><img class="medium feature-image" src="<$mt:AssetURL$>" alt="<$mt:AssetLabel encode_html="1"$>" /><mt:else><mt:setvarblock name="w"><mt:AssetProperty property="image_width"></mt:setvarblock><mt:setvarblock name="h"><mt:AssetProperty property="image_height"></mt:setvarblock><img src="<mt:if name="w" gt="$h"><mt:AssetThumbnailURL height="230"$><mt:else><mt:AssetThumbnailURL width="230"$></mt:if>" class="center <mt:if name="w" gt="$h">wide<mt:else>tall</mt:if> medium feature-image" alt="<$mt:AssetLabel encode_html="1"$>" /></mt:CroppedAsset></mt:EntryAssets></mt:setvarblock>
+</mt:ifnonempty>
 <mt:if name="thumbnail"><div class="featured-image"><a href="<$mt:EntryPermalink$>"><$mt:var name="thumbnail"$></a></div></mt:if>
               <h2 class="post-title entry-title"><a href="<$mt:EntryPermalink$>" title="<$mt:EntryTitle encode_html="1"$>" rel="bookmark"><$mt:EntryTitle encode_html="1"$></a></h2>
               <p class="byline"><span class="text">By</span> <span class="author vcard"><a class="url fn n" href="<$mt:EntryAuthorURL$>" title="<$mt:EntryAuthorDisplayName encode_html="1"$>"><$mt:EntryAuthorDisplayName$></a></span> <span class="text">on</span> <abbr class="published" title="<$MTEntryDate format_name="iso8601"$>"><$MTEntryDate format="%m %d, %y"$></abbr></p>

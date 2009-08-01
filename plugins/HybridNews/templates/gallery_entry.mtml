@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
+<mt:if tag="EntryHTMLTitle" ne="">
+    <title><$MTEntryHTMLTitle encode_html="1"$> - <$MTBlogName encode_html="1"$></title>
+<mt:else>
+    <title><$MTEntryTitle encode_html="1"$> - <$MTBlogName encode_html="1"$></title>
+</mt:if>
+    <link rel="canonical" href="<$mt:EntryPermalink$>" />
+    <$mt:include module="HTML Head"$>
+    <MTEntryPrevious><link rel="prev" href="<$MTEntryPermalink$>" title="<$MTEntryTitle encode_html="1"$>" rel="bookmark" /></MTEntryPrevious>
+    <MTEntryNext><link rel="next" href="<$MTEntryPermalink$>" title="<$MTEntryTitle encode_html="1"$>" rel="bookmark" /></MTEntryNext>
+
+    <script type="text/javascript" src="<$MTStaticWebPath$>plugins/mid-century-photos/jquery.scrollable-1.0.1.min.js"></script>
+
+    <$MTEntryTrackbackData$>
+</head>
+<body class="ltr logged-in single single-36 <mt:IfNonEmpty tag="EntryCategory">category-<$mt:CategoryBasename$></mt:IfNonEmpty> <MTEntryIfTagged><MTEntryTags glue=' '>tag-<$MTTagName regex_replace="/ /g","-"$></MTEntryTags></MTEntryIfTagged> primary-active secondary-inactive subsidiary-inactive">
+
+  <div id="body-container">
+    <$mt:include module="Banner Header"$>
+    <div id="container">
+      <div id="content"> <!-- Deprecated. Use the .content or .hfeed class for styling instead of #content. -->
+      <div class="hfeed content">
+        <div class="breadcrumb breadcrumbs"><div class="breadcrumb-trail"><span class="breadcrumb-title">Browse:</span> <a href="<$mt:BlogURL$>" title="<$mt:BlogName encode_html="1"$>" class="trail-begin">Home</a> <MTIfNonEmpty tag="EntryCategory"> / </mt:IfNonEmpty><MTEntryCategories glue=', '><a href="<$MTCategoryArchiveLink$>" rel="category"><$MTCategoryLabel$></a></MTEntryCategories> / <span class="trail-end"><$mt:EntryTitle$></span></div></div>
+
+        <!-- google_ad_section_start -->
+        <div id="post-<$mt:EntryID$>" class="hentry post <MTIfNonEmpty tag="EntryCategory">category-<$mt:CategoryBasename$></MTIfNonEmpty> <MTEntryIfTagged><MTEntryTags glue=' '>tag-<$MTTagName regex_replace="/ /g","-"$></MTEntryTags></MTEntryIfTagged>">
+            <h1 class="single-title entry-title"><a href="<$mt:EntryPermalink$>" title="<$mt:EntryTitle encode_html="1"$>" rel="bookmark"><$mt:EntryTitle encode_html="1"$></a></h1>
+            <p class="byline"><span class="text">By</span> <span class="author vcard"><a class="url fn n" href="<$mt:EntryAuthorURL$>" title="<$mt:EntryAuthorDisplayName encode_html="1"$>"><$mt:EntryAuthorDisplayName$></a></span> <span class="text">on</span> <abbr class="published" title="<$MTEntryDate format_name="iso8601"$>"><$MTEntryDate format="%B %e, %y"$></abbr></p>
+            <div class="entry-content entry">
+              <mt:include module="Photo Macro">
+              <mt:EntryAssets lastn="1">
+              <$mt:GetVar name="photo" max_size="590"$>
+              </mt:EntryAssets>
+<mt:DropCapsEnabled>
+              <mt:section regex_replace="/<p>([A-Z])/g","<p><span class='drop-cap'>$1</span>"><$mt:EntryBody$></mt:section>
+<mt:else>
+              <$mt:EntryBody$>
+</mt:DropCapsEnabled>
+      	    </div>
+            <$mt:include module="Album Slider"$>
+            <p class="entry-meta post-meta-data">
+              <MTIfNonEmpty tag="EntryCategory"><span class="categories"><span class="text">Posted in</span> <MTEntryCategories glue=', '><a href="<$MTCategoryArchiveLink$>" rel="category"><$MTCategoryLabel$></a></MTEntryCategories></span></MTIfNonEmpty>
+              <MTEntryIfTagged><span class="tags"> <MTIfNonEmpty tag="EntryCategory"><span class="separator">|</span></MTIfNonEmpty> <span class="text">Tagged</span> <MTEntryTags glue=', '><a href="<$mt:CGIPath$><$mt:SearchScript$>?IncludeBlogs=<$mt:BlogID$>&amp;tag=<$mt:TagName regex_replace="/\s/g","+" url_encode="1"$>&amp;limit=20" rel="tag"><$MTTagName$></a></MTEntryTags></span></MTEntryIfTagged>
+            </p>
+        </div><!-- //end post -->
+        <!-- google_ad_section_end -->
+        <div class="author-profile vcard">
+          <$mt:include module="Userpic" userpic_size="96" userpic_type="author"$>
+          <h4 class="author-name fn n"><a href="<$mt:AuthorURL$>"><$mt:AuthorDisplayName$></a></h4>
+<mt:ignore>
+          <p class="author-description author-bio"><$mt:AuthorBio$></p>
+</mt:ignore>
+	</div>
+
+        <$mt:include module="Comments"$>
+
+      </div><!-- //end .content -->
+      </div><!-- //end #content -->
+      <div id="widget-container">
+        <div id="primary" class="aside">
+          <mt:widgetset name="Simple Sidebar">
+        </div>
+      </div>
+    </div>
+    <$mt:include module="Banner Footer"$>
+  </div>
+</body>
+</html>

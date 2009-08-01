@@ -452,9 +452,14 @@ img.wp-smiley {
 	float: left;
 	border-right: 1px solid #2b526b;
 	}
-#cat-navigation a {
+#cat-navigation .top-level {
 	display: block;
 	padding: 7px 20px 6px 20px;
+	text-transform: uppercase;
+	color: #fafafa;
+}
+#cat-navigation a {
+	display: block;
 	text-transform: uppercase;
 	color: #fafafa;
 	}

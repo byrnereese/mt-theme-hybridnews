@@ -2,6 +2,6 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME            => 'HybridNews',
-    VERSION         => '0.4',
+    VERSION         => '0.5',
     DISTNAME        => 'HybridNews',
 );

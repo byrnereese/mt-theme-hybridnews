@@ -42,7 +42,7 @@
     <ul class="menu sf-menu">
 <mt:TopLevelCategories>
 <mt:SubCatIsFirst><mt:HasParentCategory>      <ul class="children"></mt:HasParentCategory></mt:SubCatIsFirst>
-      <li class="cat-item cat-item-<$mt:CategoryID$>">
+      <li class="cat-item cat-item-<$mt:CategoryID$> <mt:HasParentCategory>child<mt:else>top-level</mt:HasParentCategory>">
 <mt:IfNonZero tag="MTCategoryCount">
         <a href="<$mt:CategoryArchiveLink$>"<MTIfNonEmpty tag="MTCategoryDescription"> title="View all posts filed under <$mt:CategoryLabel$>"</MTIfNonEmpty>>
           <$mt:CategoryLabel$>

@@ -1,6 +1,6 @@
 name: "Hybrid News Plugin"
 description: "An adaptation of the open source Hyrbid News Theme for WordPress for the Movable Type platform."
-version: 0.4
+version: 0.5
 schema_version: 1
 id: "HybridNews"
 
@@ -90,6 +90,15 @@ template_sets:
         options: ,American Football,Arts,Athletics,Automotive,Badminton,Baseball,Basketball,Books,Boxing,Business,Celebrities,College Baseball,College Basketball,College Football,College Sports,Companies,Computing,Cricket,Culture,Cycling,Economy,Education,Entertainment,Environment,Field Hockey,Food and Beverage,Geography,Golf,Handball,Headlines,Health,High School Sports,Home and Garden,Humor,Ice Hockey,Industry,Internet,Legal,Lifestyle,Local,Markets,Movies,Music,Nation,Olympics,Op/Ed,Personal Technology,Politics,Racing,Religion,Rugby,Satire,Science,Soccer,Space,Sports,Table Tennis,Technology,Tennis,Theater,Travel,TV,Video Games,Weird News,World
         obj_type: entry
         tag: EntryGoogleNewsCategory
+    thumbnail_prototypes:
+      feature_thumb: 
+        label: 'Homepage Feature'
+        max_width: 230
+        max_height: 200
+      excerpt_thumb: 
+        label: 'Excerpt Thumbnail'
+        max_width: 100
+        max_height: 100
     templates:
       widget:
         widget_monthly_archive:
@@ -244,6 +253,229 @@ template_sets:
           label: 'Sidebar'
         asset_insertion:
           label: 'Asset Insertion'
+        sitemap_mod:
+          label: 'Sitemap Include'
+      system:
+        comment_preview:
+          label: 'Comment Preview'
+        comment_response:
+          label: 'Comment Response'
+        dynamic_error:
+          label: 'Dynamic Error'
+        search_results:
+          label: 'Search Results'
+        popup_image:
+          label: 'Pop-up Image'
+  hybrid_news_gallery:
+    base_path: templates/
+    photo_gallery: 1
+    label: 'Hybrid News (Photo Gallery)'
+    options:
+      fieldsets:
+        misc:
+          label: Miscellaneous
+        display:
+          label: Display Options
+        ads:
+          label: Advertising
+      use_featured_photo:
+        type: checkbox
+        label: 'Use Featured Photo?'
+        hint: "For use only on Photo Galleries, this will turn on and off the featured photo on the main index."
+        tag: 'IfUseFeaturedPhotoOnIndex?'
+        fieldset: display
+      photo_layout:
+        type: select
+        values: "Grid,Blog"
+        label: 'Gallery Main Index Layout'
+        hint: "For use only on Photo Galleries, this will determine the layout to use on the main index."
+        tag: 'PhotoGalleryLayout'
+        default: 'Grid'
+        fieldset: display
+      link_back:
+        type: checkbox
+        label: 'Link Love?'
+        hint: 'Link back to Hybrid News and Majordojo as a way to say thank you. (Optional)'
+        tag: 'ShowHybridLinkLove?'
+        fieldset: misc
+      dropcaps:
+        type: checkbox
+        label: 'Use Drop Caps?'
+        hint: 'Enable drop caps for your blog posts?'
+        tag: 'DropCapsEnabled?'
+        fieldset: misc
+      copyright:
+        type: text
+        label: 'Copyright'
+        hint: 'The copyright statement that appears at the bottom of the page.'
+        tag: 'HybridCopyright'
+        fieldset: misc
+      banner_ad_top:
+        type: textarea
+        label: 'Ad (Banner)'
+        hint: 'The advertisement located in the header of the site.'
+        tag: 'HybridBannerAdTop'
+        fieldset: ads
+    fields:
+      html_title_tag:
+        name: "HTML Title Tag"
+        description: "An optional title for your blog post that will only appear in the HTML title tag (this helps improve SEO)."
+        type: text
+        obj_type: entry
+        tag: EntryHTMLTitle
+    templates:
+      widget:
+        widget_monthly_archive:
+          label: 'Monthly Archive List'
+        widget_cats:
+          label: 'Category List'
+        widget_links:
+          label: 'Links'
+        widget_blogroll:
+          label: 'Blog Roll'
+        widget_text:
+          label: 'Text Widget'
+        widget_text2:
+          label: 'Text Widget 2'
+        widget_accordian:
+          label: 'Accordian'
+        widget_albums:
+          label: 'Albums'
+      widgetset:
+        footer:
+          label: Footer
+          widgets:
+             - 'Category List'
+             - 'Blog Roll'
+             - 'Text Widget 2'
+        blog:
+          label: Blog Sidebar
+          widgets:
+             - 'Albums'
+             - 'Accordian'
+             - 'Text Widget'
+        archive_p:     
+          label: Archive (primary)
+          widgets: 
+             - 'Albums'
+             - 'Accordian'
+        archive_s:     
+          label: Archive (secondary)
+        homepage_p:     
+          label: Homepage (primary)
+          widgets: 
+             - 'Albums'
+             - 'Accordian'
+             - 'Text Widget'
+        homepage_s:
+          label: Homepage (secondary)
+          widgets:
+             - 'Monthly Archive List'
+             - 'Links'
+        search_p:     
+          label: Search (primary)
+          widgets: 
+             - 'Albums'
+             - 'Accordian'
+             - 'Text Widget'
+        search_s:
+          label: Search (secondary)
+          widgets:
+        generic:
+          label: Simple Sidebar
+          widgets:
+             - 'Albums'
+             - 'Accordian'
+             - 'Text Widget'
+      index:
+        sitemap:
+          label: 'Sitemap (Web)'
+          outfile: 'sitemap.xml'
+          rebuild_me: 0 
+        feed_recent:
+          label: 'Feed - Recent Photos'
+          outfile: atom.xml
+          rebuild_me: 1
+        feed_comments:
+          label: 'Feed - Recent Comments'
+          outfile: comments.xml
+          rebuild_me: 1
+        gallery_main_index:
+          label: 'Main Index (Frontdoor)'
+          outfile: index.html
+          rebuild_me: 1
+        javascript:
+          label: 'JavaScript (Functions)'
+          outfile: javascript.js
+          rebuild_me: 1
+        javascript_mt:
+          label: 'JavaScript (MT Config)'
+          outfile: mt.js
+          rebuild_me: 1
+        styles:
+          label: 'Stylesheet'
+          outfile: styles.css
+          custom_css: 1
+        rsd:
+          label: 'RSD'
+          outfile: rsd.xml
+          rebuild_me: 1
+      archive:
+        gallery_category_entry_listing:
+          label: 'Album Listing'
+          mappings:
+            category:
+              archive_type: Category
+              preferred: 1
+        category_entry_feed:
+          label: 'Album Feed'
+          mappings:
+            category:
+              archive_type: Category
+              file_template: '%-c/index.xml'
+              preferred: 0
+        gallery_monthly_entry_listing:
+          label: 'Monthly Photo Listing'
+          mappings:
+            monthly:
+              archive_type: Monthly
+              preferred: 1
+      individual:
+        gallery_entry:
+          label: Photo
+          mappings:
+            individual:
+              archive_type: Individual
+              file_template: %y/%m/%-f
+              preferred: 1
+        page:
+          label: Page
+          mappings:
+            page:
+              archive_type: Page
+              file_template: %-c/%-f
+              preferred: 1
+      module:
+        banner_footer:
+          label: 'Banner Footer'
+        photo_macro:
+          label: 'Photo Macro'
+        gallery_slider:
+          label: 'Album Slider'
+        banner_header:
+          label: 'Banner Header'
+        comments:
+          label: 'Comments'
+        entry_summary:
+          label: 'Entry Summary'
+        global_variables:
+          label: 'Global Variables'
+        html_head:
+          label: 'HTML Head'
+        individual_comment:
+          label: 'Individual Comment'
+        sidebar:
+          label: 'Sidebar'
         sitemap_mod:
           label: 'Sitemap Include'
       system:

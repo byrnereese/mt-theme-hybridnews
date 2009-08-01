@@ -1,0 +1,212 @@
+/* Override from styles.css and front-page.css */
+.content ul {
+	list-style: none;
+	margin-left: 0px;
+	}
+.content ul li {
+	overflow: hidden;
+	padding-left: 0px;
+	background: none;
+	}
+.photo-gallery .feature img {
+	max-width: 200px;
+	max-height: 200px;
+	width: 200px;
+	height: 200px;
+	}
+.thumbnail img {
+  border: 0;
+}
+.entry-content img {
+        border: 5px solid #001838;
+}
+
+/* End override */
+
+.entry-photo img {
+  border: 1px solid #CCCCCC;
+  padding: 10px;
+  margin: 0 auto 15px auto;
+}
+.entry-photo.is-photo {
+  text-align: center;
+}
+.entry-photo .entry-excerpt {
+  margin-left: 220px;
+}
+.photo-listing ul {
+  padding: 2.7px 0 2.7px 0;
+  list-style: none;
+}
+.photo-listing ul li {
+  float: left;
+  padding: 2.7px;
+}
+
+photo-listing ul {
+  margin-left: 0;
+}
+.photo-listing ul li {
+  margin-right: 7px;
+}
+
+.photo-listing li {
+  position: relative;
+  margin-bottom: 7px;
+}
+
+.photo-listing li .thumbnail {
+  float: none;
+  width: 125px;
+  height: 125px;
+  margin: 0;
+  padding: 4px;
+  background: #eee;
+  border: 1px solid #ccc;
+  position: relative;
+}
+
+.photo-listing li .label {
+  position: absolute;
+  bottom: 7px;
+  left: 7px;
+  background: black;
+  text-align: center;
+  font-size: 10px;
+  width: 125px;
+  opacity: .8;
+  overflow: hidden;
+}
+
+.photo-listing li .label span {
+  color: white;
+  text-transform: uppercase;
+}
+
+.mt-main-index h2 { 
+  font-size: 16px;
+}
+
+/* Albums Widget */
+.widget-archive-album ul {
+  margin: 0px;
+}
+.widget-archive-album ul li {
+  border-bottom: 1px solid #E7EEF3;
+  float: left;
+  vertical-align: middle;
+  height: 60px;
+  overflow: hidden;
+  margin: 0;
+  width: 130px;
+  padding-top: 5px;
+}
+.widget-archive-album ul li.odd {
+  margin-right: 18px;
+}
+.widget-archive-album ul li a {
+  border: 0;
+  display: normal;
+}
+.widget-archive-album ul li span {
+  display: block;
+  float: left;
+}
+.widget-archive-album ul li span.photo {
+  width: 50px;
+}
+.widget-archive-album ul li span.album-name {
+  width: 150px;
+  margin-left: 8px;
+}
+
+.widget-archive-album ul li {
+}
+.widget-archive-album ul li span.album-name {
+  width: 70px;
+}
+.widget-archive-album ul li span.photo img {
+  max-width: 42px;
+  max-height: 42px;
+}
+.photo img { border: 1px solid #ccc; padding: 2px; }
+
+/* End Albums Widget *****************************************************/
+
+/* Browse Gallery Widget */
+.widget-gallery { position: relative; width: 555px; margin: 0 auto 0 auto !important; }
+.gallery-item { display: block !important; }
+
+div.scrollable { 
+    /* required settings */ 
+    position:relative; 
+    overflow:hidden;          
+    width:510px;
+    height:96px; 
+    margin-bottom: 10px;
+} 
+a.next { margin-top: 40px; margin-left: 5px; position: absolute; right: 0; }
+a.prev { margin-top: 40px; margin-right: 5px;  position: absolute; }
+ 
+/*  
+    root element for scrollable items. Must be absolutely positioned 
+    and it should have a super large width to accomodate scrollable items. 
+    it's enough that you set width and height for the root element and 
+    not for this element. 
+*/ 
+div.scrollable ul.items {     
+    /* this cannot be too large */ 
+    width:20000em;     
+    position:absolute;         
+} 
+ul.items li a { display: block; height: 88px !important; }
+/*  
+    a single item. must be floated on horizontal scrolling 
+    typically this element is the one that *you* will style 
+    the most. 
+*/ 
+div.scrollable ul.items li { 
+    float:left; 
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    padding: 3px 3px 0 3px !important;
+} 
+ 
+/* you may want to setup some decorations to active item */ 
+ul.items li.active { 
+    border:1px inset #ccc;         
+    background-color:#fff; 
+}
+
+/* this makes it possible to add next button beside scrollable */
+div.scrollable {
+  float:left;
+  margin-left: 25px;
+}
+
+/* prev, next, prevPage and nextPage buttons */
+a.prev, a.next, a.prevPage, a.nextPage {
+	display:block;
+	width:18px;
+	height:18px;
+	background:url(../../mid-century-photos/left.png) no-repeat;
+	float:left;
+	cursor:pointer;
+}
+
+/* mouseover state */
+a.prev:hover, a.next:hover, a.prevPage:hover, a.nextPage:hover {
+	background-position:0px -18px;		
+}
+
+/* disabled navigational button */
+a.disabled {
+	visibility:hidden !important;		
+}
+
+/* next button uses another background image */
+a.next, a.nextPage {
+	background-image:url(../../mid-century-photos/right.png);
+        clear:right;
+}
+/* End Gallery Widget *****************************************************/
