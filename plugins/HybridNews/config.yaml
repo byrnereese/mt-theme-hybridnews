@@ -1,6 +1,6 @@
 name: "Hybrid News Plugin"
 description: "An adaptation of the open source Hyrbid News Theme for WordPress for the Movable Type platform."
-version: 0.5
+version: 0.5.1
 schema_version: 1
 id: "HybridNews"
 
