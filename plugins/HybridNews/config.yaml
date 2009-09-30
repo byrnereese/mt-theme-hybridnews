@@ -243,8 +243,6 @@ template_sets:
           label: 'Comments'
         entry_summary:
           label: 'Entry Summary'
-        global_variables:
-          label: 'Global Variables'
         html_head:
           label: 'HTML Head'
         individual_comment:
