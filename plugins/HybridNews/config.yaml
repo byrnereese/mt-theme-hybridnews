@@ -1,6 +1,6 @@
 name: "Hybrid News Plugin"
 description: "An adaptation of the open source Hyrbid News Theme for WordPress for the Movable Type platform."
-version: 0.5.1
+version: 0.5.3
 schema_version: 1
 id: "HybridNews"
 
@@ -22,18 +22,21 @@ template_sets:
         hint: 'Link back to Hybrid News and Majordojo as a way to say thank you. (Optional)'
         tag: 'ShowHybridLinkLove?'
         fieldset: misc
+        default: 1
       dropcaps:
         type: checkbox
         label: 'Use Drop Caps?'
         hint: 'Enable drop caps for your blog posts?'
         tag: 'DropCapsEnabled?'
         fieldset: misc
+        default: 0
       copyright:
         type: text
         label: 'Copyright'
         hint: 'The copyright statement that appears at the bottom of the page.'
         tag: 'HybridCopyright'
         fieldset: misc
+        default: ''
       banner_ad_top:
         type: textarea
         label: 'Ad (Banner)'
@@ -46,18 +49,21 @@ template_sets:
         hint: 'Turn on the slideshow widget to feature posts on the front door. Posts given a tag of @slideshow will be featured here.'
         tag: 'IfSlideshowEnabled?'
         fieldset: homepage
+        default: 1
       slide_count:
         type: text
         label: 'Slide Count'
         hint: 'The number of posts to feature in the slideshow.'
         tag: 'SlideshowCount'
         fieldset: homepage
+        default: 3
       excerpt_count:
         type: text
         label: 'Excerpt Count'
         hint: 'The number of posts to excerpt (typically below the slideshow if it is enabled).'
         tag: 'ExcerptCount'
         fieldset: homepage
+        default: 2
     fields:
       exclude_cat:
         name: "Exclude Category from Front Door"
@@ -282,6 +288,7 @@ template_sets:
         hint: "For use only on Photo Galleries, this will turn on and off the featured photo on the main index."
         tag: 'IfUseFeaturedPhotoOnIndex?'
         fieldset: display
+        default: 1
       photo_layout:
         type: select
         values: "Grid,Blog"
@@ -296,12 +303,14 @@ template_sets:
         hint: 'Link back to Hybrid News and Majordojo as a way to say thank you. (Optional)'
         tag: 'ShowHybridLinkLove?'
         fieldset: misc
+        default: 1
       dropcaps:
         type: checkbox
         label: 'Use Drop Caps?'
         hint: 'Enable drop caps for your blog posts?'
         tag: 'DropCapsEnabled?'
         fieldset: misc
+        default: 0
       copyright:
         type: text
         label: 'Copyright'
